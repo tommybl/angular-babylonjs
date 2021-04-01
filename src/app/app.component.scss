@@ -1,0 +1,59 @@
+.toolbar {
+    &__spacer {
+        flex: 1 1 auto;
+    }
+
+    button {
+        &:not(:last-child) {
+            margin-right: 25px;
+        }
+    }
+}
+
+mat-drawer-container {
+    min-height: 100%;
+}
+
+mat-drawer-content {
+    min-height: 100%;
+}
+
+mat-drawer {
+    width: 25%;
+    max-width: 100%;
+}
+
+.drawer {
+    padding: 30px 20px;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &__title {
+            margin-bottom: 0;
+        }
+    }
+
+    hr {
+        margin: 30px 0;
+    }
+}
+
+img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+p {
+    margin: 25px 0;
+
+    &:first-child {
+        margin-top: 0;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
