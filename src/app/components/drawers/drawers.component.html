@@ -1,0 +1,6 @@
+<ng-container [ngSwitch]="hotspotKey">
+    <app-drawer-hotspot1 *ngSwitchCase="'hotspot_1'"></app-drawer-hotspot1>
+    <app-drawer-hotspot2 *ngSwitchCase="'hotspot_2'"></app-drawer-hotspot2>
+    <app-drawer-hotspot3 *ngSwitchCase="'hotspot_3'"></app-drawer-hotspot3>
+    <div *ngSwitchDefault><h2>No selected hotspot</h2></div>
+</ng-container>

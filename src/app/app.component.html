@@ -1,26 +1,12 @@
 <mat-drawer-container class="example-container" [hasBackdrop]="true">
     <mat-drawer #drawer [mode]="'over'" class="drawer">
         <div class="drawer__header">
-            <h1 class="drawer__header__title">Lorem Ipsum</h1>
+            <h1 class="drawer__header__title">Hotspot Drawer</h1>
             <button mat-raised-button color="primary" (click)="drawer.close()"><mat-icon>close</mat-icon> Close</button>
         </div>
         <hr>
         <div class="drawer__content">
-            <div>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident..
-                </p>
-                <img src="//via.placeholder.com/600x400?text=HOTSPOT+1" alt="placeholder">
-                <p>
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                    totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-                    dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-                    sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                </p>
-            </div>
+            <app-drawers [hotspotKey]="hotspotKey"></app-drawers>
         </div>
     </mat-drawer>
     <mat-drawer-content>
@@ -28,9 +14,12 @@
             <button mat-icon-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
             <span class="toolbar__title">Angular + BabylonJs</span>
             <span class="toolbar__spacer"></span>
-            <button mat-raised-button><mat-icon>play_circle</mat-icon> Start animation</button>
-            <button mat-raised-button><mat-icon>stop_circle</mat-icon> Stop animation</button>
+            <button mat-raised-button (click)="playAnimation()"><mat-icon>play_circle</mat-icon> Play animation</button>
+            <button mat-raised-button (click)="pauseAnimation()"><mat-icon>stop_circle</mat-icon> Pause animation</button>
+            <button mat-raised-button (click)="resetAnimation()"><mat-icon>refresh</mat-icon> Reset animation</button>
         </mat-toolbar>
+
+        <app-scene></app-scene>
 
         <router-outlet></router-outlet>
     </mat-drawer-content>
