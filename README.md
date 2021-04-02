@@ -1,4 +1,10 @@
-# AngularBabylonjs
+# Angular 11 + BabylonJs integration
+
+POC showing BabylonJS integration in action, with interactions between Angular components and BabylonJs scenes.
+
+Stackblitz demo at https://stackblitz.com/edit/angular-with-babylonjs
+
+----
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
 
