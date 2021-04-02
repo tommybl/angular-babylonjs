@@ -14,6 +14,7 @@ import { DrawersComponent } from './components/drawers/drawers.component';
 import { DrawerHotspot1Component } from './components/drawer-hotspot1/drawer-hotspot1.component';
 import { DrawerHotspot2Component } from './components/drawer-hotspot2/drawer-hotspot2.component';
 import { DrawerHotspot3Component } from './components/drawer-hotspot3/drawer-hotspot3.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
     declarations: [
@@ -32,7 +33,8 @@ import { DrawerHotspot3Component } from './components/drawer-hotspot3/drawer-hot
         MatButtonModule,
         MatToolbarModule,
         MatIconModule,
-        MatSidenavModule
+        MatSidenavModule,
+        MatTooltipModule
     ],
     providers: [],
     bootstrap: [AppComponent]

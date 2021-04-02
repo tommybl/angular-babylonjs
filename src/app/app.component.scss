@@ -3,9 +3,24 @@
         flex: 1 1 auto;
     }
 
-    button {
+    button, &__title {
         &:not(:last-child) {
             margin-right: 25px;
+        }
+    }
+
+    &__controls--mobile {
+        display: none;
+    }
+
+    @media only screen and (max-width: 850px) {
+        &__controls {
+            &--mobile {
+                display: block;
+            }
+            &--desktop {
+                display: none;
+            }
         }
     }
 }
@@ -19,7 +34,7 @@ mat-drawer-content {
 }
 
 mat-drawer {
-    width: 35%;
+    width: 550px;
     max-width: 100%;
 }
 
