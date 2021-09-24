@@ -1,0 +1,32 @@
+<ng-container *ngIf="data?.scene as scene">
+    <div *ngIf="data?.sector as sector" class="hotspot__sector">
+        <h2 *ngIf="sector.title" [innerHTML]="sector.title | safeHtml"></h2>
+        <h3 *ngIf="sector.subtitle" [innerHTML]="sector.subtitle | safeHtml"></h3>
+        <div *ngIf="sector.intro" class="hotspot__sector__intro" [innerHTML]="sector.intro | safeHtml"></div>
+    </div>
+
+    <div class="hotspot__product">
+        <h3 *ngIf="scene.title" [innerHTML]="scene.title | safeHtml"></h3>
+        <div *ngIf="scene.intro" class="hotspot__product__intro" [innerHTML]="scene.intro | safeHtml"></div>
+    </div>
+
+    <div *ngIf="scene.content?.length" class="hotspot__sections">
+        <div *ngFor="let section of scene.content" class="hotspot__section">
+            <h3 *ngIf="section.name" [innerHTML]="section.name | safeHtml"></h3>
+            <div class="hotspot__section__inner" *ngIf="section.title">
+                <img src="//via.placeholder.com/200x250" alt="placeholder">
+                <div class="hotspot__section__content">
+                    <h4 [innerHTML]="section.title | safeHtml"></h4>
+                    <div *ngIf="section.intro" class="hotspot__section__content__copy" [innerHTML]="section.intro | safeHtml"></div>
+                    <ul *ngIf="section.list?.length">
+                        <li *ngFor="let item of section.list" [innerHTML]="item | safeHtml"></li>
+                    </ul>
+                    <a *ngIf="section.cta" href="{{ section.cta.link }}" target="_blank" class="icon--chevron-right icon-after">
+                        {{ section.cta.title }}
+                    </a>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+</ng-container>

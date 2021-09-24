@@ -1,0 +1,141 @@
+@import '../../../assets/fonts/icons/mixins';
+
+$black: #000;
+$white: #fff;
+$dark: #333;
+$grey: #666;
+$panasonic-blue: #006ab0;
+$panasonic-blue--active: darken($panasonic-blue, 10%);
+
+h1, h2, h3, h4 {
+    font-weight: bold;
+}
+
+:host {
+    color: $dark;
+    font-size: 15px;
+}
+
+.hotspot {
+
+    &__sector, &__product {
+        > h2 {
+            font-size: 32px;
+            color: $panasonic-blue;
+        }
+
+        > h3 {
+            font-size: 25px;
+        }
+
+        &:not(:first-child) {
+            margin-top: 25px;
+        }
+    }
+
+    &__sections {
+        &:not(:first-child) {
+            margin-top: 50px;
+        }
+    }
+
+    $section-gap: 35px;
+
+    &__section {
+        font-size: 14px;
+
+        &:not(:first-child) {
+            margin-top: $section-gap;
+        }
+
+        > h3 {
+            color: $black;
+            font-size: 25px;
+            margin-bottom: 25px;
+        }
+
+        &__inner {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: flex-start;
+            gap: 30px;
+
+            > img {
+                flex: 3;
+            }
+        }
+
+        &__content {
+            flex: 6;
+
+            > h4 {
+                font-size: 20px;
+            }
+
+            > ul {
+                margin: 0;
+                padding-left: 0;
+                list-style: none;
+
+                &:not(:first-child) {
+                    margin-top: 18px;
+                }
+                &:not(:last-child) {
+                    margin-bottom: 0;
+                }
+
+                li {
+                    position: relative;
+                    padding-left: 25px;
+
+                    @include icon(tick);
+
+                    &::before {
+                        left: 0;
+                        top: 3px;
+                        position: absolute;
+                        color: $panasonic-blue;
+                    }
+
+                    + li {
+                        margin-top: 10px;
+                    }
+                }
+            }
+
+            > a {
+                display: inline-flex;
+                align-items: center;
+                font-size: 16px;
+                font-weight: bold;
+                color: $panasonic-blue;
+                text-decoration: none;
+
+                &:not(:first-child) {
+                    margin-top: 18px;
+                }
+
+                &:focus, &:hover {
+                    color: $panasonic-blue--active;
+                }
+
+                &::after {
+                    font-size: 14px;
+                    margin-left: 8px;
+                }
+            }
+        }
+
+        > hr {
+            margin-top: $section-gap;
+            border: none;
+            border-top: 1px solid #dbdbdb;
+        }
+
+        &:last-child {
+            > hr {
+                display: none;
+            }
+        }
+    }
+}

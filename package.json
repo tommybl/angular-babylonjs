@@ -2,6 +2,7 @@
     "name": "angular-babylonjs",
     "version": "0.0.0",
     "author": "Tommy Lopes",
+    "readme": "Node v14.17.3 + NPM 6.14.13",
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
@@ -22,9 +23,6 @@
         "@angular/platform-browser": "~11.2.7",
         "@angular/platform-browser-dynamic": "~11.2.7",
         "@angular/router": "~11.2.7",
-        "babylonjs": "^4.2.0",
-        "babylonjs-gui": "^4.2.0",
-        "babylonjs-materials": "^4.2.0",
         "rxjs": "~6.6.0",
         "tslib": "^2.0.0",
         "zone.js": "~0.11.3"

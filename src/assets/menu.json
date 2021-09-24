@@ -1,0 +1,22 @@
+{
+    "education": {
+        "title": "Tellus rutrum tellus pellentesque",
+        "scenes": [
+            {
+                "alias": "auditorium",
+                "name": "Auditorium",
+                "image": "//via.placeholder.com/370x210"
+            },
+            {
+                "alias": "classroom",
+                "name": "Operator Chamber and Dedicated Studio",
+                "image": "//via.placeholder.com/370x210"
+            },
+            {
+                "alias": "classroom",
+                "name": "Seminar Room",
+                "image": "//via.placeholder.com/370x210"
+            }
+        ]
+    }
+}

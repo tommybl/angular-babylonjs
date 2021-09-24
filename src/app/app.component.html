@@ -1,39 +1,14 @@
-<mat-drawer-container class="example-container" [hasBackdrop]="true">
+<mat-drawer-container [hasBackdrop]="true">
     <mat-drawer #drawer [mode]="'over'" class="drawer">
         <div class="drawer__header">
-            <h1 class="drawer__header__title">Hotspot Drawer</h1>
-            <button mat-stroked-button (click)="drawer.close()"><mat-icon>close</mat-icon> Close</button>
+            <button (click)="drawer.close()" class="icon--close icon-after">Close</button>
         </div>
-        <hr>
         <div class="drawer__content">
-            <app-drawers [hotspotKey]="hotspotKey"></app-drawers>
+            <app-hotspot-drawer></app-hotspot-drawer>
         </div>
     </mat-drawer>
     <mat-drawer-content>
-        <mat-toolbar class="toolbar" color="primary">
-            <button mat-icon-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
-            <span class="toolbar__title">Angular + BabylonJs</span>
-            <span class="toolbar__spacer"></span>
-            <div class="toolbar__controls--desktop">
-                <button mat-raised-button (click)="playAnimation()"><mat-icon>play_arrow</mat-icon> Play animation</button>
-                <button mat-raised-button (click)="pauseAnimation()"><mat-icon>stop</mat-icon> Pause animation</button>
-                <button mat-raised-button (click)="resetAnimation()"><mat-icon>refresh</mat-icon> Reset animation</button>
-            </div>
-            <div class="toolbar__controls--mobile">
-                <button mat-mini-fab aria-label="Play animation" matTooltip="Play animation" matTooltipClass="tooltip" (click)="playAnimation()">
-                    <mat-icon>play_arrow</mat-icon>
-                </button>
-                <button mat-mini-fab aria-label="Pause animation" matTooltip="Pause animation" matTooltipClass="tooltip" (click)="pauseAnimation()">
-                    <mat-icon>stop</mat-icon>
-                </button>
-                <button mat-mini-fab aria-label="Reset animation" matTooltip="Reset animation" matTooltipClass="tooltip" (click)="resetAnimation()">
-                    <mat-icon>refresh</mat-icon>
-                </button>
-            </div>
-        </mat-toolbar>
-
-        <app-scene></app-scene>
-
+        <app-header></app-header>
         <router-outlet></router-outlet>
     </mat-drawer-content>
 </mat-drawer-container>

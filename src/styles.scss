@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import 'assets/fonts/icons/icons';
+
 html, body {
     height: 100%;
 }
@@ -15,18 +17,11 @@ img {
     max-width: 100%;
 }
 
-p {
-    margin: 25px 0 !important;
-
+p, ul, ol {
     &:first-child {
         margin-top: 0;
     }
     &:last-child {
         margin-bottom: 0;
     }
-}
-
-.tooltip {
-    color: #000!important;
-    background: #fff!important;
 }

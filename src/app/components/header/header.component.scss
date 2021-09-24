@@ -1,0 +1,108 @@
+$header-padding--x: 50px;
+$header-padding--y: 40px;
+$menu-padding--x: 30px;
+$menu-padding--y: 30px;
+$animation: 300ms ease-in-out;
+
+.header {
+    &__logo {
+        display: block;
+        position: fixed;
+        top: $header-padding--y;
+        left: $header-padding--x;
+    }
+
+    &__burger {
+        padding: 0;
+        border: none;
+        background: none;
+        position: fixed;
+        top: $header-padding--y;
+        right: $header-padding--x;
+        color: #006ab0;
+        cursor: pointer;
+
+        &::before {
+            font-size: 35px;
+        }
+    }
+
+    &__menu {
+        width: 80%;
+        visibility: hidden;
+        position: fixed;
+        top: -100%;
+        right: 0;
+        background: #fff;
+        padding: $menu-padding--y $menu-padding--x;
+        transition: visibility $animation, top $animation;
+        box-shadow: 0 10px 30px rgb(#000, 0.25);
+
+        &.opened {
+            top: 0;
+            visibility: visible;
+        }
+
+        > h2 {
+            padding-top: 25px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        > ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            list-style: none;
+            gap: 12px;
+
+            li {
+                flex: 1;
+                position: relative;
+
+                > div {
+                    width: 100%;
+                    padding-top: 56.75%;
+                    background-color: #fff;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+
+                a {
+                    display: block;
+                    color: #006ab0;
+                    font-size: 18px;
+                    font-weight: bold;
+                    padding: 14px 20px;
+                    max-width: 180px;
+                    text-decoration: none;
+                    background: rgba(#fff, 0.85);
+                    position: absolute;
+                    bottom: 10px;
+                    left: 10px;
+                    transition: color $animation, background $animation;
+
+                    &:hover, &:focus {
+                        color: #fff;
+                        background: rgba(#006ab0, 0.85);
+                    }
+                }
+            }
+        }
+    }
+
+    &__close {
+        color: #006ab0;
+        border: none;
+        background: none;
+        position: absolute;
+        top: $menu-padding--y;
+        right: $menu-padding--x;
+        cursor: pointer;
+
+        &::before {
+            font-size: 30px;
+        }
+    }
+}
