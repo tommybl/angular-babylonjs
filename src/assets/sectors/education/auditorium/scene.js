@@ -2,12 +2,16 @@ var canvas = document.getElementById("renderCanvas");
 var engine = null;
 var scene = null;
 var sceneToRender = null;
+var camera = null;
 var createDefaultEngine = function() { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true,  disableWebGL2Support: false}); };
 
 var createScene = async function () {
 
+    var assetsDir = 'assets/sectors/education/auditorium/assets/';
+
     // This creates a basic Babylon Scene object (non-mesh)
     var scene = new BABYLON.Scene(engine);
+    console.log(scene);
     scene.clearColor = new BABYLON.Color3(0.82, 0.83, 0.88);
     scene.ambientColor = new BABYLON.Color3(0.4, 0.4, 0.4);
     scene.collisionsEnabled = true;
@@ -70,16 +74,16 @@ var createScene = async function () {
 
     //Creates a new standard material
     var newFloorMaterial = new BABYLON.StandardMaterial;
-    newFloorMaterial.diffuseTexture = new BABYLON.Texture("assets/sectors/education/auditorium/assets/planks.jpg", scene);
-    newFloorMaterial.bumpTexture = new BABYLON.Texture("assets/sectors/education/auditorium/assets/planks.jpg", scene);
+    newFloorMaterial.diffuseTexture = new BABYLON.Texture(assetsDir + "planks.jpg", scene);
+    newFloorMaterial.bumpTexture = new BABYLON.Texture(assetsDir + "planks.jpg", scene);
     newFloorMaterial.reflectionFresnelParameters = new BABYLON.FresnelParameters();
     newFloorMaterial.reflectionFresnelParameters.leftColor = new BABYLON.Color3(0.8, 0.8, 0.8);
     newFloorMaterial.reflectionFresnelParameters.rightColor = BABYLON.Color3.Black();
 
     //Creates a new standard material
     var newCurtainMaterial = new BABYLON.StandardMaterial;
-    newCurtainMaterial.diffuseTexture = new BABYLON.Texture("assets/sectors/education/auditorium/assets/fabric.jpg", scene);
-    newCurtainMaterial.bumpTexture = new BABYLON.Texture("assets/sectors/education/auditorium/assets/fabric.jpg", scene);
+    newCurtainMaterial.diffuseTexture = new BABYLON.Texture(assetsDir + "fabric.jpg", scene);
+    newCurtainMaterial.bumpTexture = new BABYLON.Texture(assetsDir + "fabric.jpg", scene);
     newCurtainMaterial.reflectionFresnelParameters = new BABYLON.FresnelParameters();
     newCurtainMaterial.reflectionFresnelParameters.leftColor = new BABYLON.Color3(0.8, 0.8, 0.8);
     newCurtainMaterial.reflectionFresnelParameters.rightColor = BABYLON.Color3.Black();
@@ -90,7 +94,7 @@ var createScene = async function () {
 
     //Creates a new standard material
     var newGrillMaterial = new BABYLON.StandardMaterial;
-    newGrillMaterial.diffuseTexture = new BABYLON.Texture("assets/sectors/education/auditorium/assets/tex_structure_speaker_1.jpg", scene);
+    newGrillMaterial.diffuseTexture = new BABYLON.Texture(assetsDir + "tex_structure_speaker_1.jpg", scene);
     newGrillMaterial.reflectionFresnelParameters = new BABYLON.FresnelParameters();
     newGrillMaterial.reflectionFresnelParameters.leftColor = new BABYLON.Color3(0.8, 0.8, 0.8);
     newGrillMaterial.reflectionFresnelParameters.rightColor = BABYLON.Color3.Black();
@@ -98,7 +102,13 @@ var createScene = async function () {
     newGrillMaterial.diffuseTexture.vScale = 6;
 
     //Async load, dealys ataching materials
-    var cubeLoaded = await BABYLON.SceneLoader.ImportMeshAsync( "", "assets/sectors/education/auditorium/assets/", "auditoriumv3.babylon", scene);
+    var cubeLoaded = await BABYLON.SceneLoader.ImportMeshAsync("", assetsDir, "auditoriumv3.babylon", scene, function(progress) {
+        if (progress.loaded === progress.total) {
+            const event = new CustomEvent('sceneLoaded');
+            document.body.dispatchEvent(event);
+        }
+    });
+
     bordWhiteLoaded = scene.getMeshByName("ProjectorScreenWhite");
     bordBlueLoaded = scene.getMeshByName("ProjectorScreenBlue");
     laptopLoaded = scene.getMeshByName("TOUGHBOOK");
@@ -363,11 +373,10 @@ var createScene = async function () {
     }));
 
     engine.hideLoadingUI();
+    window.camera = camera;
     return scene;
 };
 
-var engine;
-var scene;
 initFunction = async function() {
     var asyncEngineCreation = async function() {
         try {
@@ -388,9 +397,4 @@ initFunction().then(() => {scene.then(returnedScene => { sceneToRender = returne
             sceneToRender.render();
         }
     });
-});
-
-// Resize
-window.addEventListener("resize", function () {
-    engine.resize();
 });

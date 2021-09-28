@@ -1,0 +1,32 @@
+// Use with MAX media query.
+$xs-break: 360px;
+$sm-break: 480px;
+$md-break: 599px;
+$lg-break: 768px;
+$xl-break: 980px;
+$xxl-break: 1280px;
+
+// Use with MIN media query.
+$xs-break-min: 361px;
+$sm-break-min: 481px;
+$md-break-min: 600px;
+$lg-break-min: 769px;
+$xl-break-min: 981px;
+$xxl-break-min: 1281px;
+
+// Layout dimensions.
+$viewport-max-width: 1920px;
+
+$viewports-map: (
+    "default": $viewport-max-width,
+    "xxl": $xxl-break,
+    "xxl-min": $xxl-break-min,
+    "xl": $xl-break,
+    "xl-min": $xl-break-min,
+    "lg": $lg-break,
+    "lg-min": $lg-break-min,
+    "md": $md-break,
+    "md-min": $md-break-min,
+    "sm": $sm-break,
+    "sm-min": $sm-break-min
+);

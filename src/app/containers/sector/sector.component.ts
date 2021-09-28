@@ -24,7 +24,6 @@ export class SectorComponent implements OnInit, OnDestroy {
             .subscribe( paramMap => {
                 // Set up new sector data.
                 this.sector = paramMap.get('sector');
-                console.log('route change sector room', this.sector);
                 this.sceneService.setSector(this.sector);
             });
     }

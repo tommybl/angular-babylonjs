@@ -1,0 +1,18 @@
+// Primary colours
+$white: #FFF;
+$black: #000;
+$dark: #333;
+$grey: #666;
+$wild-sand: #F6F6F6;
+$panasonic-blue: #006ab0;
+$panasonic-blue--active: darken($panasonic-blue, 10%);
+
+// Colors mapping
+$colorsMap: (
+    'black': $black,
+    'white': $white,
+    'dark': $dark,
+    'grey': $grey,
+    'wild-sand': $wild-sand,
+    'panasonic-blue': $panasonic-blue
+);

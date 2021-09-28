@@ -1,0 +1,52 @@
+@mixin font-heading() {
+    font-weight: normal;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+@mixin font-body($weight: normal) {
+    font-weight: $weight;
+    font-family: 'Arial', sans-serif;
+}
+
+@mixin fs-h1() {
+    font-size: 40px;
+    line-height: 48px;
+}
+
+@mixin fs-h2() {
+    font-size: 32px;
+    line-height: 36px;
+}
+
+@mixin fs-h3() {
+    font-size: 26px;
+    line-height: 30px;
+}
+
+@mixin fs-h4() {
+    font-size: 20px;
+    line-height: 24px;
+}
+
+@mixin fs-h5() {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+@mixin fs-body() {
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    @include respond((max: $lg-break)) {
+        font-size: $base-font-size--tablet;
+        line-height: $base-line-height--tablet;
+    }
+    @include respond((max: $sm-break)) {
+        font-size: $base-font-size--mobile;
+        line-height: $base-line-height--mobile;
+    }
+}
+
+@mixin fs-small() {
+    font-size: 14px;
+    line-height: 21px;
+}

@@ -1,21 +1,31 @@
 {
+    "corporate": {
+        "title": "Tellus rutrum tellus pellentesque",
+        "scenes": [
+            {
+                "alias": "meeting-room",
+                "name": "Meeting Room",
+                "image": "//via.placeholder.com/382x215"
+            }
+        ]
+    },
     "education": {
         "title": "Tellus rutrum tellus pellentesque",
         "scenes": [
             {
                 "alias": "auditorium",
                 "name": "Auditorium",
-                "image": "//via.placeholder.com/370x210"
+                "image": "assets/images/auditorium-small.jpg"
             },
             {
                 "alias": "classroom",
                 "name": "Operator Chamber and Dedicated Studio",
-                "image": "//via.placeholder.com/370x210"
+                "image": "assets/images/operator-chamber.jpg"
             },
             {
                 "alias": "classroom",
                 "name": "Seminar Room",
-                "image": "//via.placeholder.com/370x210"
+                "image": "assets/images/seminar-room.jpg"
             }
         ]
     }

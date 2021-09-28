@@ -6,13 +6,12 @@
 <div class="header__menu" *ngIf="sector && menu && menu[sector]" [class.opened]="opened">
     <button class="header__close icon--close" (click)="close()"></button>
     <h2>{{ menu[sector].title }}</h2>
-    <ul *ngIf="menu[sector].scenes?.length">
+    <ul *ngIf="menu[sector].scenes?.length" class="unstyled">
         <li *ngFor="let item of menu[sector].scenes">
-            <div [style.background-image]="'url(' + item.image + ')'">
-                <a [routerLink]="'sectors/' + sector + '/' + item.alias" (click)="close()">
-                    {{ item.name }}
-                </a>
-            </div>
+            <a [routerLink]="'sectors/' + sector + '/' + item.alias" (click)="close()" [style.background-image]="'url(' + item.image + ')'">
+                <div class="backdrop"></div>
+                <span>{{ item.name }}</span>
+            </a>
         </li>
     </ul>
 </div>

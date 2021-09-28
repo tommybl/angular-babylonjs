@@ -11,6 +11,7 @@ import { takeUntil } from 'rxjs/operators';
 export class HotspotDrawerComponent implements OnInit, OnDestroy {
 
     data: any = null;
+    sector!: string|null;
 
     private readonly destroy$ = new Subject<boolean>();
 
@@ -19,6 +20,12 @@ export class HotspotDrawerComponent implements OnInit, OnDestroy {
             .pipe(takeUntil(this.destroy$))
             .subscribe((data: any) => {
                 this.data = data;
+            });
+
+        this.sceneService.sectorListener$
+            .pipe(takeUntil(this.destroy$))
+            .subscribe((sector: any) => {
+                this.sector = sector;
             });
     }
 

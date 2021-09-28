@@ -19,26 +19,28 @@ export class SceneComponent implements OnInit, AfterViewInit, OnDestroy {
 
     @ViewChild('renderCanvas', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
 
-    constructor(private route: ActivatedRoute, private sceneService: SceneService, private http: HttpClient) {
-    }
+    constructor(
+        private route: ActivatedRoute,
+        private sceneService: SceneService,
+        private http: HttpClient)
+    {}
 
     ngOnInit(): void {
+        this.sceneService.loading();
     }
 
     ngAfterViewInit(): void {
-        // this.sceneService.createScene(this.canvasRef);
-        // this.sceneService.startEngine();
-
         this.route.paramMap
             .pipe(takeUntil(this.destroy$))
             .subscribe( paramMap => {
+                // Show loader.
+                this.sceneService.loading();
                 // Clear previous scene from memory.
                 this.sceneService.stop();
 
                 // Set up new sector data.
                 const sector = paramMap.get('sector');
                 const scene = paramMap.get('scene');
-                console.log('route change sector room', sector, scene);
                 this.sceneService.setSector(sector);
                 this.sceneService.setScene(scene);
 

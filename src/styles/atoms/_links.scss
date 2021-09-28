@@ -1,0 +1,30 @@
+$animation: 250ms ease-in-out;
+
+a, .link {
+    &.primary {
+        display: inline-flex;
+        align-items: center;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: bold;
+        color: $panasonic-blue;
+        text-decoration: none;
+        transition: color $animation;
+
+        @include font-heading();
+
+        &::after {
+            font-size: 14px;
+            margin-left: 8px;
+            transition: margin-left $animation;
+        }
+
+        &:focus, &:hover {
+            color: $panasonic-blue--active;
+
+            &::after {
+                margin-left: 11px;
+            }
+        }
+    }
+}

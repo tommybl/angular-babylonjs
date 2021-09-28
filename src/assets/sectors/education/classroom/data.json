@@ -4,6 +4,8 @@
             {
                 "name": "Product",
                 "title": "TOUGHBOOK 55",
+                "image": "toughbook.png",
+                "image_type": "internal",
                 "intro": "For the heavy traffic, all-day use that education demands, there’s no better solution than the TOUGHBOOK range of hardwearing tech. And the TOUGHBOOK 55 notebook is no exception.",
                 "list": [
                     "Lightweight yet robust hardware that stands the test of time, along with knocks, drops and spills",
@@ -19,6 +21,8 @@
             {
                 "name": "Technology",
                 "title": "Quality assurance, guaranteed",
+                "image": "//via.placeholder.com/200x250",
+                "image_type": "external",
                 "intro": "<p>The ultimate user experience is never a one-off moment for TOUGHBOOK. It takes exceptional service, from the moment you start talking to us about your requirements, right on throughout the lifetime of your devices.</p><p>Our TOUGHBOOK European Configuration and Service centre has a critical role to play, as the home to our solutions engineering team, prototyping and testing facilities, and our service technicians, ready to ensure your device is made and maintained to your specifications.</p>",
                 "cta": {
                     "title": "Take a virtual tour",
@@ -28,6 +32,8 @@
             {
                 "name": "Case study",
                 "title": "See TOUGHBOOK in action",
+                "image": "//via.placeholder.com/200x250",
+                "image_type": "external",
                 "intro": "Don’t just take our word for it. We have hundreds of case studies demonstrating just how far our TOUGHBOOK range of notebooks, tablets and handheld devices can take you.",
                 "cta": {
                     "title": "Explore our case studies",
@@ -43,21 +49,15 @@
             {
                 "name": "Product",
                 "title": "Large venue projector",
-                "intro": "With unrivalled image visibility and superior colour production, our projectors are ready to help you inspire students’ creativity.",
-                "list": [
-                    "Featuring accessible and intuitive whiteboard technology",
-                    "Available with a choice of touchscreen sizes ranging from 42” to 80”",
-                    "Ideal for collaborative learning and the Bring Your Own Device (BYOD) trend",
-                    "Bring practical functions to collaboration and learning, such as PowerPoint presentation mode, video and screen capture and desktop mode"
-                ],
-                "cta": {
-                    "title": "Discover more",
-                    "link": "https://business.panasonic.co.uk/visual-system/pt-rdq10"
-                }
+                "image": "projector.png",
+                "image_type": "internal",
+                "intro": "With unrivalled image visibility and superior colour production, our projectors are ready to help you inspire students’ creativity."
             },
             {
                 "name": "Technology",
                 "title": "Solid shine laser technology",
+                "image": "//via.placeholder.com/200x250",
+                "image_type": "external",
                 "intro": "Discover a whole new level of visual experiences. Our laser projectors are designed so that big, bright, colourful images can be enjoyed, experienced and remembered – while you can forget all about maintenance.",
                 "list": [
                     "Over 20,000 hours maintenance-free lifespan",
@@ -72,6 +72,8 @@
             {
                 "name": "Case study",
                 "title": "A tech blueprint for the future of higher education",
+                "image": "whitepaper.png",
+                "image_type": "internal",
                 "intro": "When a Swedish University wanted to build a new campus that would be the best place to study and work, it turned to Panasonic for its varied projector and camera requirements.",
                 "cta": {
                     "title": "Read the case study",
@@ -81,6 +83,8 @@
             {
                 "name": "Whitepaper",
                 "title": "Laser projection for higher education",
+                "image": "whitepaper.png",
+                "image_type": "internal",
                 "intro": "We evaluated the performance of one of our laser projectors, the RZ670 with a rating of 6,500 lm, against a range of the higher education industry’s best-selling lamp-lit projectors, to see which offered the best financial and environmental prospects.",
                 "cta": {
                     "title": "Discover our insights",
@@ -94,6 +98,8 @@
             {
                 "name": "Product",
                 "title": "Professional LED Displays",
+                "image": "//via.placeholder.com/200x250",
+                "image_type": "external",
                 "intro": "For a quality display even in low lights, our advanced LED displays offer bright, crisp 4K resolution with the ultra-reliable qualities and expandability you expect from Panasonic.",
                 "list": [
                     "4K LED technology, for unrivalled visibility in all lighting conditions",
@@ -108,6 +114,8 @@
             {
                 "name": "Technology",
                 "title": "Your questions, answered",
+                "image": "//via.placeholder.com/200x250",
+                "image_type": "external",
                 "intro": "At Panasonic, your journey with us doesn’t stop when you have our products in your hands. We have a range of ‘How To’ guides and step-by-step tutorials to help you get to grips with our products.",
                 "cta": {
                     "title": "Find the answers ",
@@ -117,6 +125,8 @@
             {
                 "name": "Case study",
                 "title": "Capturing the attention of Germany’s future leaders",
+                "image": "//via.placeholder.com/200x250",
+                "image_type": "external",
                 "intro": "Otto Beisheim School of Management in Dusseldorf needed to create a connected learning environment to meet the needs of remote and foreign students, alike. As a result, we implemented a Panopto lecture capture system alongside video conferencing and Panasonic AV to create a flexible teaching space.",
                 "cta": {
                     "title": "See the full story",
@@ -130,6 +140,8 @@
             {
                 "name": "Product",
                 "title": "PressIT",
+                "image": "//via.placeholder.com/200x250",
+                "image_type": "external",
                 "intro": "<p>Collaboration no longer has to be a nightmare. Now, your lecturers can achieve one-click presentation with PressIT.</p><p>No more waiting for systems or software setup. No more technical issues. No more delays. Simply, plug. Play. Present.</p>",
                 "list": [
                     "Connect to 40 devices, live – including those students who are working remotely",

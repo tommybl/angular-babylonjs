@@ -1,27 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import 'assets/fonts/icons/icons';
+// Base
+@import "base/icons/mixins";
+@import "base/icons/icons";
+@import "base/colors";
+@import "base/color-classes";
+@import "base/variables";
+@import "base/viewports";
+@import "base/mixins";
+@import "base/helpers";
+@import "base/helper-classes";
+@import "base/typography";
+@import "base/typography--classes";
+@import "base/base";
 
-html, body {
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-img {
-    display: block;
-    height: auto;
-    max-width: 100%;
-}
-
-p, ul, ol {
-    &:first-child {
-        margin-top: 0;
-    }
-    &:last-child {
-        margin-bottom: 0;
-    }
-}
+// Atoms
+@import "atoms/buttons";
+@import "atoms/links";
+@import "atoms/lists";

@@ -2,29 +2,18 @@ var canvas = document.getElementById("renderCanvas");
 var engine = null;
 var scene = null;
 var sceneToRender = null;
+var camera = null;
 var createDefaultEngine = function() { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true,  disableWebGL2Support: false}); };
-
-
 
 var createScene = async function () {
 
-
+    var assetsDir = 'assets/sectors/education/classroom/assets/';
 
     // This creates a basic Babylon Scene object (non-mesh)
     var scene = new BABYLON.Scene(engine);
     scene.clearColor = new BABYLON.Color3(0.82, 0.83, 0.88);
     scene.ambientColor = new BABYLON.Color3(0.4, 0.4, 0.4);
     scene.collisionsEnabled = true;
-
-
-
-    //Scene debugger
-    //scene.debugLayer.show();
-
-
-
-
-
 
     // This creates and positions an arc rotate camera (non-mesh)
     var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(0, 2.12, 4.3), scene);
@@ -42,9 +31,6 @@ var createScene = async function () {
     scene.activeCamera.alpha += Math.PI;
     camera.checkCollisions = true;
 
-
-
-
     //Sun
     var light = new BABYLON.DirectionalLight("DirectionalLight", new BABYLON.Vector3(-0.715, -0.615, -0.332), scene);
     light.shadowMinZ = -25;
@@ -57,15 +43,10 @@ var createScene = async function () {
     GILight.diffuse = new BABYLON.Color3(.8, .94, 1);
     GILight.intensity = 0.35;
 
-
     //HemiLight
     var hemiLight = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
     hemiLight.intensity = 0.45;
     hemiLight.diffuse = new BABYLON.Color3(0.7, 0.7, 1);
-
-
-
-
 
     //Creates a new standard material
     var newWhiteMaterial = new BABYLON.StandardMaterial;
@@ -74,17 +55,12 @@ var createScene = async function () {
     newWhiteMaterial.reflectionFresnelParameters.leftColor = new BABYLON.Color3(0.8, 0.8, 0.8);
     newWhiteMaterial.reflectionFresnelParameters.rightColor = BABYLON.Color3.Black();
 
-
-
-
     //Creates a new standard material
     var newBlueMaterial = new BABYLON.StandardMaterial;
     newBlueMaterial.diffuseColor = new BABYLON.Color3(0.37, 0.51, 0.89);
     newBlueMaterial.reflectionFresnelParameters = new BABYLON.FresnelParameters();
     newBlueMaterial.reflectionFresnelParameters.leftColor = new BABYLON.Color3(0.8, 0.8, 0.8);
     newBlueMaterial.reflectionFresnelParameters.rightColor = BABYLON.Color3.Black();
-
-
 
     //Creates a new standard material
     var newScreenMaterial = new BABYLON.StandardMaterial;
@@ -94,16 +70,13 @@ var createScene = async function () {
     newScreenMaterial.reflectionFresnelParameters.rightColor = BABYLON.Color3.White();
     newScreenMaterial.emissiveColor = new BABYLON.Color3(0.49, 0.60, 0.89);
 
-
-
-
-
-
-
-
-
     //Async load, dealys ataching materials
-    var cubeLoaded = await BABYLON.SceneLoader.ImportMeshAsync( "", "assets/sectors/education/classroom/assets/", "classroomv2.babylon", scene);
+    var cubeLoaded = await BABYLON.SceneLoader.ImportMeshAsync("", assetsDir, "classroomv2.babylon", scene, function(progress) {
+        if (progress.loaded === progress.total) {
+            const event = new CustomEvent('sceneLoaded');
+            document.body.dispatchEvent(event);
+        }
+    });
 
     laptopLoaded = scene.getMeshByName("TOUGHBOOK");
     tvStandLoaded = scene.getMeshByName("TVStand");
@@ -129,9 +102,6 @@ var createScene = async function () {
     schoolTableLoaded = scene.getMeshByName("SchoolTable");
     shelfLoaded = scene.getMeshByName("shelf");
 
-
-
-
     //Attach white material
 
     mountLoaded.material = newWhiteMaterial;
@@ -151,8 +121,6 @@ var createScene = async function () {
     schoolTableLoaded.material = newWhiteMaterial;
     shelfLoaded.material = newWhiteMaterial;
 
-
-
     //Attach blue material
     laptopLoaded.material = newBlueMaterial;
     projectorLoaded.material = newBlueMaterial;
@@ -162,8 +130,6 @@ var createScene = async function () {
 
     //Attach screen material
     screenLoaded.material = newScreenMaterial;
-
-
 
     ///SHADOWS + COLLISIONS
 
@@ -196,8 +162,6 @@ var createScene = async function () {
     schoolTableLoaded.receiveShadows = true;
     shelfLoaded.receiveShadows = true;
 
-
-
     //Camera Collisions
 
     laptopLoaded.checkCollisions = true;
@@ -223,14 +187,8 @@ var createScene = async function () {
     schoolTableLoaded.checkCollisions = true;
     shelfLoaded.checkCollisions = true;
 
-
-
     //Position Table
     tableLoaded.setPosition = new BABYLON.Vector3(-8.437,-243.556,57.118);
-
-
-
-
 
     //Instances
 
@@ -246,10 +204,6 @@ var createScene = async function () {
     schoolTableInstance2.scaling = new BABYLON.Vector3(0.01,0.01,0.01);
     schoolTableInstance2.rotation = new BABYLON.Vector3(Math.PI*1.5,0,Math.PI*2.75);
 
-
-
-
-
     //Laptop Tooltip
     let actionManager = new BABYLON.ActionManager(scene);
     laptopLoaded.actionManager = actionManager;
@@ -259,8 +213,6 @@ var createScene = async function () {
         const event = new CustomEvent('hotspotAction', { detail: 'toughbook' });
         document.body.dispatchEvent(event);
     }));
-
-
 
     //PressIT Tooltip
     let actionManagerPress = new BABYLON.ActionManager(scene);
@@ -272,8 +224,6 @@ var createScene = async function () {
         document.body.dispatchEvent(event);
     }));
 
-
-
     //Screen Tooltip
     let actionManagerScreen = new BABYLON.ActionManager(scene);
     screenLoaded.actionManager = actionManagerScreen;
@@ -283,8 +233,6 @@ var createScene = async function () {
         const event = new CustomEvent('hotspotAction', { detail: 'screen' });
         document.body.dispatchEvent(event);
     }));
-
-
 
     //Projector Tooltip
     let actionManagerProjector = new BABYLON.ActionManager(scene);
@@ -296,39 +244,11 @@ var createScene = async function () {
         document.body.dispatchEvent(event);
     }));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     engine.hideLoadingUI();
+    window.camera = camera;
     return scene;
-
-
-
-
-
-
 };
 
-
-
-
-
-var engine;
-var scene;
 initFunction = async function() {
     var asyncEngineCreation = async function() {
         try {
@@ -349,15 +269,4 @@ initFunction().then(() => {scene.then(returnedScene => { sceneToRender = returne
             sceneToRender.render();
         }
     });
-});
-
-
-
-
-
-
-
-// Resize
-window.addEventListener("resize", function () {
-    engine.resize();
 });

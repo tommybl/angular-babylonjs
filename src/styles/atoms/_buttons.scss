@@ -1,0 +1,26 @@
+$animation: 300ms ease-in-out;
+
+button, .button {
+    &.primary {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 260px;
+        padding: 22px 25px;
+        color: $white;
+        border: none;
+        font-size: 20px;
+        line-height: 26px;
+        background: $panasonic-blue;
+        border-radius: 3px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: color $animation, background-color $animation;
+
+        @include font-heading();
+
+        &:hover, &:focus {
+            background: $panasonic-blue--active;
+        }
+    }
+}

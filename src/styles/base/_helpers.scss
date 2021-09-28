@@ -1,0 +1,36 @@
+@mixin font-smoothing() {
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@function calculateRem($size) {
+    $remSize: round($size / $base-font-size * 1000) / 1000;
+    @return #{$remSize}rem;
+}
+
+// Clearfix
+%clearfix {
+    &::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+}
+
+@mixin clearfix {
+    &::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+}
+
+@mixin accessible-hide() {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}

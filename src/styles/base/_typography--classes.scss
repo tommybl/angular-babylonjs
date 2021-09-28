@@ -1,0 +1,87 @@
+.font-body {
+    @include font-body();
+}
+
+.font-body--bold {
+    @include font-body(bold);
+}
+
+.font-heading {
+    @include font-heading();
+}
+
+.normal {
+    font-weight: normal;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.bolder {
+    font-weight: bolder;
+}
+
+.lighter {
+    font-weight: lighter;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.fs-h1 {
+    @include fs-h1();
+}
+
+.fs-h2 {
+    @include fs-h2();
+}
+
+.fs-h3 {
+    @include fs-h3();
+}
+
+.fs-h4 {
+    @include fs-h4();
+}
+
+.fs-h5 {
+    @include fs-h5();
+}
+
+.fs-body {
+    @include fs-body();
+}
+
+.fs-small {
+    @include fs-small();
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
+    @include font-heading();
+}
+
+h1, .h1, h2, .h2 {
+    color: $panasonic-blue;
+}
+
+h1, .h1 {
+    @include fs-h1();
+}
+
+h2, .h2 {
+    @include fs-h2();
+}
+
+h3, .h3 {
+    @include fs-h3();
+}
+
+h4, .h4 {
+    @include fs-h4();
+}
+
+h5, .h5 {
+    @include fs-h5();
+}

@@ -1,0 +1,12 @@
+@each $name, $color in $colorsMap {
+    .c--#{$name} {
+        color: $color;
+    }
+    .bg--#{$name} {
+        background-color: $color;
+    }
+}
+
+.bg--transparent {
+    background: transparent;
+}

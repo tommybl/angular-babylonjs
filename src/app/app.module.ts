@@ -11,6 +11,7 @@ import { SectorComponent } from './containers/sector/sector.component';
 import { RunScriptsDirective } from './directives/run-scripts.directive';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { HeaderComponent } from './components/header/header.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { HeaderComponent } from './components/header/header.component';
         SectorComponent,
         RunScriptsDirective,
         SafeHtmlPipe,
-        HeaderComponent
+        HeaderComponent,
+        LoaderComponent
     ],
     imports: [
         BrowserModule,
