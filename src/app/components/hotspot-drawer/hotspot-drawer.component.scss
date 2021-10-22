@@ -34,10 +34,10 @@
             flex-wrap: nowrap;
             align-items: flex-start;
             gap: 30px;
+        }
 
-            > img {
-                flex: 3;
-            }
+        &__image {
+            flex: 3;
         }
 
         &__content {

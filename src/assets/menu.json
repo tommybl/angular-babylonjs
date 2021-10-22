@@ -1,16 +1,26 @@
 {
     "corporate": {
-        "title": "Tellus rutrum tellus pellentesque",
+        "title": "How does Panasonic support Manufacturing?",
         "scenes": [
             {
-                "alias": "meeting-room",
-                "name": "Meeting Room",
+                "alias": "loading-bay",
+                "name": "Loading Bay",
+                "image": "//via.placeholder.com/382x215"
+            },
+            {
+                "alias": "shop-floor",
+                "name": "Shop Floor",
+                "image": "//via.placeholder.com/382x215"
+            },
+            {
+                "alias": "back-office",
+                "name": "Back Office",
                 "image": "//via.placeholder.com/382x215"
             }
         ]
     },
     "education": {
-        "title": "Tellus rutrum tellus pellentesque",
+        "title": "How does Panasonic support Education?",
         "scenes": [
             {
                 "alias": "auditorium",
@@ -18,7 +28,7 @@
                 "image": "assets/images/auditorium-small.jpg"
             },
             {
-                "alias": "classroom",
+                "alias": "studio",
                 "name": "Operator Chamber and Dedicated Studio",
                 "image": "assets/images/operator-chamber.jpg"
             },

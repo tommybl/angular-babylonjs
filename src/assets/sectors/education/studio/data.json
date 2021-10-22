@@ -1,0 +1,263 @@
+{
+    "control": {
+        "title": "control",
+        "intro": "The best equipment is only as good as its controls. That’s why at Panasonic, we produce a range of superior multi-function camera control panels, remotes, converters and supporting software to ensure your educators and students alike can remain fully in control.",
+        "content": [
+            {
+                "name": "Product",
+                "title": "Control panels",
+                "image": "toughbook-range.jpg",
+                "image_type": "internal",
+                "intro": "Every model in Panasonic’s professional pan/tilt camera range can be controlled with our intuitive multi-function, high-performance controllers. ",
+                "list": [
+                    "Full camera control capability, including flexible joystick control",
+                    "Clear control visibility",
+                    "Preset memory recall and tracing memory",
+                    "Flexible customisation features available",
+                    "Control multiple cameras with one solution"
+                ],
+                "cta": {
+                    "title": "Explore the product range >>",
+                    "link": "https://business.panasonic.co.uk/professional-camera/remote-camera-systems/control-panels"
+                }
+            },
+            {
+                "name": "Case study",
+                "title": "Pitch perfect live streaming with Gothenburg Symphony Orchestra",
+                "image": "toughbook.jpg",
+                "image_type": "internal",
+                "intro": "The Gothenburg Symphony Orchestra has implemented a Panasonic remote camera infrastructure to help live stream its concerts to 150,000 people a month in the highest possible quality. Their television channel broadcasts concerts live and on demand in Full HD, giving classical music enthusiasts around the world the opportunity to experience the world of the Orchestra.</br>/<br>And making it all possible? Panasonic technology.",
+                "cta": {
+                    "title": "Discover how >>",
+                    "link": "https://business.panasonic.co.uk/professional-camera/case-study/gothenburg-symphony-orchestra"
+                }
+            },
+            {
+                "name": "Technology",
+                "title": "PTZ Control Centre software",
+                "image": "engineeredBySpecialists.jpg",
+                "image_type": "internal",
+                "intro": "Control multiple PTZ cameras from one place with our free PC PTZ Control centre software.",
+                "cta": {
+                    "title": "See what’s possible >>",
+                    "link": "https://business.panasonic.co.uk/professional-camera/software/ptz-control-center"
+                }
+            }
+        ]
+    },
+    "kairos": {
+        "title": "KAIROS",
+        "intro": "The best equipment is only as good as its controls. That’s why at Panasonic, we produce a range of superior multi-function camera control panels, remotes, converters and supporting software to ensure your educators and students alike can remain fully in control.",
+        "content": [
+            {
+                "name": "Product",
+                "title": "KAIROS Platform",
+                "image": "toughbook-range.jpg",
+                "image_type": "internal",
+                "intro": "KAIROS offers unrestricted flexibility for input, output and operation, giving you efficient production for your expressive live videos.",
+                "list": [
+                    "Gain new flexibility and control with KAIROS’ resolution and format independent platform",
+                    "Engineered with the latest in software and CPU/GPU processing technology – meaning you can allocate your processing power with 100% efficiency",
+                    "Enjoy uncompressed processing with true uncompressed 4K inputs plus baseband and IP signals simultaneously",
+                    "Super low 1-frame latency processing"
+                ],
+                "cta": {
+                    "title": "Discover KAIROS >>",
+                    "link": "https://business.panasonic.co.uk/professional-camera/itip-centric-video-platform/KAIROS"
+                }
+            },
+            {
+                "name": "Case study",
+                "title": "Powering Live IP Production with KAIROS",
+                "image": "toughbook.jpg",
+                "image_type": "internal",
+                "intro": "Mediapro chose Panasonic the KAIROS IT/IP video processing platform to produce coverage of eLaLiga Santander – the official tournament of FIFA 21 in Spain. KAIROS was chosen for this eSports project because of its ideal workflow capabilities, its intuitive platform and the ability to configure an infinite number of scenes.",
+                "cta": {
+                    "title": "Discover the full story >>",
+                    "link": "https://business.panasonic.co.uk/professional-camera/case-study/KAIROS-Powers-Live-IP-Production-at-Mediapro-for-eLaLiga-Santander"
+                }
+            }
+        ]
+    },
+    "screen": {
+        "title": "ADVANCED LED DISPLAYS",
+        "intro": "As the world moves to 4K, Panasonic is keeping you one step ahead. Our range of professional-quality displays combine bright, crisp 4K resolution with the ultra-reliable qualities and expandability you’ve come to expect from our LED display technology.",
+        "content": [
+            {
+                "name": "Product",
+                "title": "Advanced LED Displays",
+                "image": "Display Line-up.jpg",
+                "image_type": "internal",
+                "intro": "Our 4K LED display monitors are already being used in a number of the world’s leading higher education institutions, thanks to their superior image quality and incredible durability.",
+                "list": [
+                    "Featuring DIGITAL LINK technology, allowing high-quality video, audio and control transmission over distances of up to 150m with a single LAN cable",
+                    "Highly durable with high impact resistance, suitable for heavy use and long days",
+                    "Multi-input screen capability with no processor required"
+                ],
+                "cta": {
+                    "title": "Discover the range >>",
+                    "link": "https://business.panasonic.co.uk/visual-system/advanced-led-displays-for-businesses"
+                }
+            },
+            {
+                "name": "Case study",
+                "title": "Top marks for AV at the University of Copenhagen",
+                "image": "multi-touch-displays.jpg",
+                "image_type": "internal",
+                "intro": "The Faculty of Medical Health and Sciences at the University of Copenhagen is expanding. And this ground-breaking new space – housing some of the world’s most advanced facilities for teaching and research into health and disease – needed to provide a student experience to match.</br></br>Enter Panasonic’s ‘AV system of the future’, including our advanced LED display technology.",
+                "cta": {
+                    "title": "Explore the full case study >>",
+                    "link": "https://business.panasonic.co.uk/visual-system/top-marks-for-av-at-the-university-of-copenhagen"
+                }
+            },
+            {
+                "name": "Technology",
+                "title": "Multi-touch display: Which technology is right for you?",
+                "image": "multi-touch-displays.jpg",
+                "image_type": "internal",
+                "intro": "To ensure we are covering all your institutions’ needs, Panasonic delivers different technologies embedded in our professional multi-touch screen displays.</br></br>Our interactive screens with whiteboard functionality can be used for collaboration and Bring your own device (BYOD) environments from classrooms, to seminar rooms, to lecture theatres and presentation rooms.</br></br>Our guide will help you find the right product.",
+                "cta": {
+                    "title": "View the guide >>",
+                    "link": "https://business.panasonic.co.uk/visual-system/Multi-touch-display-technologies"
+                }
+            }
+
+        ]
+    },
+    "camera": {
+        "title": "Professional broadcast solutions",
+        "intro": "Ready to broadcast into the future? We provide industry-leading technologies for media and TV production students to unlock their potential, sharpen their skills and gain knowledge of real-world production techniques.",
+        "content": [
+            {
+                "name": "Product",
+                "title": "Professional broadcast camera",
+                "image": "Display Line-up.jpg",
+                "image_type": "internal",
+                "intro": "For high-quality video at an affordable cost, our professional broadcast cameras deliver exceptional value.",
+                "list": [
+                    "4K technology for pristine image capture and playback",
+                    "Suitable for dynamic use – from sports, to live events, to studio production",
+                    "Backed by premium service from Panasonic, including optional warranty extensions and loans upon request"
+                ],
+                "cta": {
+                    "title": "Explore the range >>",
+                    "link": "https://info.business.panasonic.eu/broadcast-into-the-future"
+                }
+            },
+            {
+                "name": "Case study",
+                "title": "Unlocking creativity for the next generation",
+                "image": "multi-touch-displays.jpg",
+                "image_type": "internal",
+                "intro": "When the University of Central Lancashire decided to refit its teaching studio, it turned to Panasonic for its camera system. To serve the facility’s TV Production and Media Production courses, they took advantage of our future-proofed UHD-capable professional camera solutions.",
+                "cta": {
+                    "title": "Discover the full story >>",
+                    "link": "https://business.panasonic.co.uk/professional-camera/case-study/University-equips-new-studio-to-train-next-generation"
+                }
+            },
+            {
+                "name": "Technology",
+                "title": "Cutting edge technology over IP",
+                "image": "multi-touch-displays.jpg",
+                "image_type": "internal",
+                "intro": "Discover how Panasonic Lecture capture over IP helps to extend the classroom by offering digital learning experience: to record classroom or lecture hall presentations and post digital versions online available for either live streaming or download.</br></br>Watch our webinar, where Dean Offord is joined by Neil Burdess from Panopto to explain how we’re transforming the lecture experience.",
+                "cta": {
+                    "title": "Watch now >>",
+                    "link": "https://business.panasonic.co.uk/professional-camera/Broadcast-and-ProAV-Technology-Experience-Zone#lecture"
+                }
+            }
+
+        ]
+    },
+    "ptz": {
+        "title": "Remote PTZ Camera Systems",
+        "intro": "Since their launch, Panasonic pan tilt zoom (PTZ) cameras have been the education sector’s go-to remote-operation cameras. Designed for the ultimate image quality, speed of implementation, reliability and industry standard interoperability.",
+        "content": [
+            {
+                "name": "Product",
+                "title": "Remote PTZ Camera Systems",
+                "image": "Display Line-up.jpg",
+                "image_type": "internal",
+                "intro": "Our best-in-class family of award-winning professional PTZ cameras has an extensive feature set suited to meet your institution’s various needs, offering a single cable solution for power, control, video and audio.",
+                "list": [
+                    "Professional-grade PTZ optics with single cable power, control, video and audio",
+                    "Flexible camera installation options",
+                    "Optional presenter auto-tracking software over IP",
+                    "Professional video outputs and connectivity",
+                    "Worldwide Panasonic support, whenever you need it"
+                ],
+                "cta": {
+                    "title": "Take a closer look >>",
+                    "link": "https://business.panasonic.co.uk/professional-camera/panasonic-remote-ptz-camera-systems"
+                }
+            },
+            {
+                "name": "Case study",
+                "title": "Istanbul’s Bilgi University increases live broadcast capability",
+                "image": "multi-touch-displays.jpg",
+                "image_type": "internal",
+                "intro": "Bilgi University's Faculty of Communication gives students a taste of real broadcasting with its student-run ‘RGB’ live-stream project, hosted on YouTube. And to ensure the experience is as ‘real’ as possible, they chose Panasonic to supply the technology which underpins the venture.</br></br>Discover we’ve increased the university’s live broadcast capabilities and effectiveness with one suite of technology.",
+                "cta": {
+                    "title": "Read the case study >>",
+                    "link": "https://business.panasonic.co.uk/professional-camera/Istanbul_Bilgi_University"
+                }
+            },
+            {
+                "name": "Technology",
+                "title": "Your questions, answered",
+                "image": "multi-touch-displays.jpg",
+                "image_type": "internal",
+                "intro": "At Panasonic, your journey with us doesn’t stop when you have our products in your hands. We have a range of ‘How To’ guides and step-by-step tutorials to help you get to grips with our products – including our PTZ camera range.",
+                "cta": {
+                    "title": "Find the answers >>",
+                    "link": "https://business.panasonic.co.uk/professional-camera/how-toptz-technical-questions"
+                }
+            }
+
+        ]
+    },
+    "toughbook": {
+        "title": "TOUGHBOOK",
+        "intro": "Your work in education is extraordinary, as you encourage and grow the next generation of leaders. So the devices you use need to match your extraordinary work step for step. That’s why we build pioneering rugged laptops and 2-in-1's trusted by hardworking students and educators alike.",
+        "content": [
+            {
+                "name": "TOUGHBOOK devices",
+                "title": "Fixed-Installation Projectors",
+                "image": "fixedInstallation.jpg",
+                "image_type": "internal",
+                "intro": "For the heavy traffic, all-day use that education demands, there’s no better solution than the TOUGHBOOK range of laptops and notebooks.",
+                "list": [
+                    "Lightweight yet robust hardware that stands the test of time, along with knocks, drops and spills",
+                    "Extended battery life, plus warm and hot-swap battery options",
+                    "Superior screen readability in all conditions – perfect for darkened rooms or in bright lights"
+                ],
+                "cta": {
+                    "title": "Explore our toughest tech >>",
+                    "link": "https://business.panasonic.co.uk/mobile-solutions/products-and-accessories"
+                }
+            },
+            {
+                "name": "Case study",
+                "title": "See TOUGHBOOK in action",
+                "image": "tilburg-university.jpg",
+                "image_type": "internal",
+                "intro": "Don’t just take our word for it. We have hundreds of case studies demonstrating just how far our TOUGHBOOK range of notebooks, tablets and handheld devices can take you.",
+                "cta": {
+                    "title": "Explore our case studies >>",
+                    "link": "https://business.panasonic.co.uk/mobile-solutions/panasonic-computer-product-solutions-case-studies"
+                }
+            },
+            {
+                "name": "Technology",
+                "title": "The latest industry insights",
+                "image": "rgb_led.jpg",
+                "image_type": "internal",
+                "intro": "At Panasonic, we are constantly working in partnership with renowned institutes and industry experts from across the globe to inform our product development, and discover what’s driving change for tomorrow.</br></br>Why not take a look at our industry whitepapers, and see the latest trends for yourself.",
+                "cta": {
+                    "title": "Explore our whitepapers >>",
+                    "link": "https://business.panasonic.co.uk/mobile-solutions/whitepapers"
+                }
+            }
+        ]
+    }
+}

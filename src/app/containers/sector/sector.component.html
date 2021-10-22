@@ -3,10 +3,6 @@
     <div class="guide__inner">
         <div class="guide__copy">
             <h1>Nullam nulla eros ultricies sit</h1>
-            <div>
-                Sed aliquam ultrices mauris. Duis vel nibh at velit scelerisque suscipit. Donec interdum, metus et hendrerit aliquet,
-                dolor diam sagittis ligula, eget egestas libero turpis vel mi. Aenean viverra rhoncus pede. Etiam ut purus mattis mauris sodales aliquam.
-            </div>
         </div>
         <div class="guide__figures">
             <div class="guide__figure">
@@ -24,7 +20,27 @@
                 <div class="guide__figure__title">Middle mouse button</div>
                 <div class="guide__figure__subtitle">to pan</div>
             </div>
+            <div class="guide__figure guide__figure--touch">
+                <img src="assets/images/touch-one-finger.svg">
+                <div class="guide__figure__title">One finger drag</div>
+                <div class="guide__figure__subtitle">to rotate</div>
+            </div>
+            <div class="guide__figure guide__figure--touch">
+                <img src="assets/images/touch-two-fingers.svg">
+                <div class="guide__figure__title">Two finger drag</div>
+                <div class="guide__figure__subtitle">to pan</div>
+            </div>
+            <div class="guide__figure guide__figure--touch">
+                <img src="assets/images/touch-pinch.svg">
+                <div class="guide__figure__title">Pinch</div>
+                <div class="guide__figure__subtitle">to zoom</div>
+            </div>
         </div>
-        <button class="primary">Launch guide</button>
+        <a class="button primary"
+            [routerLink]="menu[sector].scenes[0].alias"
+            *ngIf="sector && menu && menu[sector].scenes?.length"
+        >
+            Launch
+        </a>
     </div>
 </div>

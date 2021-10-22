@@ -11,14 +11,13 @@ var createScene = async function () {
 
     // This creates a basic Babylon Scene object (non-mesh)
     var scene = new BABYLON.Scene(engine);
-    console.log(scene);
-    scene.clearColor = new BABYLON.Color3(0.82, 0.83, 0.88);
+    scene.clearColor = new BABYLON.Color3(0.98, 0.98, 0.98);
     scene.ambientColor = new BABYLON.Color3(0.4, 0.4, 0.4);
     scene.collisionsEnabled = true;
 
     // This creates and positions an arc rotate camera (non-mesh)
     var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(0, 2.12, 4.3), scene);
-    camera.setPosition(new BABYLON.Vector3(0, 3, 5));
+    camera.setPosition(new BABYLON.Vector3(25.196, 7.170, -15.469));
     camera.lowerBetaLimit = 0.1;
     camera.upperBetaLimit = (Math.PI / 2) * 0.9;
     camera.lowerRadiusLimit = 5;
@@ -32,84 +31,114 @@ var createScene = async function () {
     scene.activeCamera.alpha += Math.PI;
     camera.checkCollisions = true;
 
-    //Sun
-    var light = new BABYLON.DirectionalLight("DirectionalLight", new BABYLON.Vector3(-0.42, -0.64, 0.65), scene);
-    light.shadowMinZ = -25;
-    light.shadowMaxZ = 75;
-    light.diffuse = new BABYLON.Color3(1, .98, .8);
-    light.intensity = 0.75;
 
-    //GI bounce
-    var GILight = new BABYLON.DirectionalLight("GILight", new BABYLON.Vector3(0.49,-0.45,-0.75), scene);
-    GILight.diffuse = new BABYLON.Color3(.8, .94, 1);
-    GILight.intensity = 0.35;
+    var cameraPosition = new BABYLON.ArcRotateCamera("cameraPosition", 0, 0, 10, new BABYLON.Vector3(0, 2.12, 4.3), scene);
+    cameraPosition.setPosition(new BABYLON.Vector3(0, 3, 5));
+    cameraPosition.lowerBetaLimit = 0.1;
+    cameraPosition.upperBetaLimit = (Math.PI / 2) * 0.9;
+    cameraPosition.lowerRadiusLimit = 5;
+    cameraPosition.upperRadiusLimit = 30;
+    cameraPosition.wheelDeltaPercentage = 0.1;
+    cameraPosition.pinchDeltaPercentage = 0.0005;
+    cameraPosition.maxCameraSpeed = 10;
+    cameraPosition.minZ = 0.1;
+    cameraPosition.maxZ =80;
+    cameraPosition.attachControl(canvas, true);
+    scene.activeCamera.alpha += Math.PI;
+    cameraPosition.checkCollisions = true;
 
 
-    //HemiLight
-    var hemiLight = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
-    hemiLight.intensity = 0.45;
-    hemiLight.diffuse = new BABYLON.Color3(0.7, 0.7, 1);
+    // light for shadows
+    const light = new BABYLON.DirectionalLight(
+        'light',
+        new BABYLON.Vector3(-0.35, -0.91, 0.23),
+        scene
+    )
+    light.intensity = 1
+    const lightDistance = 1
+    light.position = new BABYLON.Vector3(10, 8, -10)
+    
+    // White material
+    var clay = new BABYLON.PBRMetallicRoughnessMaterial('clay', scene);
+    clay.baseColor = BABYLON.Color3.FromHexString('#e2dfd7');
+    clay.emissiveColor = BABYLON.Color3.FromHexString('#a0a0a0');
+    clay.metallic = 0;
+    clay.roughness = 1;
+    clay.alpha = 1;
 
     //Creates a new standard material
-    var newWhiteMaterial = new BABYLON.StandardMaterial;
-    newWhiteMaterial.diffuseColor = new BABYLON.Color3(0.9,0.9,0.9);
-    newWhiteMaterial.reflectionFresnelParameters = new BABYLON.FresnelParameters();
-    newWhiteMaterial.reflectionFresnelParameters.leftColor = new BABYLON.Color3(0.8, 0.8, 0.8);
-    newWhiteMaterial.reflectionFresnelParameters.rightColor = BABYLON.Color3.Black();
+    var clayBlue = new BABYLON.PBRMetallicRoughnessMaterial('clayBlue', scene);
+    clayBlue.baseColor = BABYLON.Color3.FromHexString('#3e6acc');
+    clayBlue.emissiveColor = BABYLON.Color3.FromHexString('#162033');
+    clayBlue.metallic = 0;
+    clayBlue.roughness = 1;
+    clayBlue.alpha = 1;
 
-    //Creates a new standard material
-    var newBlueMaterial = new BABYLON.StandardMaterial;
-    newBlueMaterial.diffuseColor = new BABYLON.Color3(0.37, 0.51, 0.89);
-    newBlueMaterial.reflectionFresnelParameters = new BABYLON.FresnelParameters();
-    newBlueMaterial.reflectionFresnelParameters.leftColor = new BABYLON.Color3(0.8, 0.8, 0.8);
-    newBlueMaterial.reflectionFresnelParameters.rightColor = BABYLON.Color3.Black();
-
-    //Creates a new standard material
-    var newScreenMaterial = new BABYLON.StandardMaterial;
-    newScreenMaterial.diffuseColor = new BABYLON.Color3(0.49, 0.60, 0.89);
-    newScreenMaterial.reflectionFresnelParameters = new BABYLON.FresnelParameters();
-    newScreenMaterial.reflectionFresnelParameters.leftColor = BABYLON.Color3.White();
-    newScreenMaterial.reflectionFresnelParameters.rightColor = BABYLON.Color3.White();
+    //screen material
+    var newScreenMaterial = new BABYLON.PBRMetallicRoughnessMaterial('newScreenMaterial', scene);
+    newScreenMaterial.baseColor = new BABYLON.Color3(0.49, 0.60, 0.89);
     newScreenMaterial.emissiveColor = new BABYLON.Color3(0.49, 0.60, 0.89);
+    newScreenMaterial.metallic = 1;
+    newScreenMaterial.roughness = 0;
+    newScreenMaterial.alpha = 1;
 
-    //Creates a new standard material
-    var newFloorMaterial = new BABYLON.StandardMaterial;
-    newFloorMaterial.diffuseTexture = new BABYLON.Texture(assetsDir + "planks.jpg", scene);
-    newFloorMaterial.bumpTexture = new BABYLON.Texture(assetsDir + "planks.jpg", scene);
-    newFloorMaterial.reflectionFresnelParameters = new BABYLON.FresnelParameters();
-    newFloorMaterial.reflectionFresnelParameters.leftColor = new BABYLON.Color3(0.8, 0.8, 0.8);
-    newFloorMaterial.reflectionFresnelParameters.rightColor = BABYLON.Color3.Black();
+    // New floor material
+    var newFloorMaterial = new BABYLON.PBRMetallicRoughnessMaterial('newFloorMaterial', scene);
+    newFloorMaterial.baseTexture = new BABYLON.Texture(assetsDir + "planksColour.jpg", scene);
+    newFloorMaterial.emissiveTexture = new BABYLON.Texture(assetsDir + "planksColour.jpg", scene);
+    newFloorMaterial.emissiveColor = new BABYLON.Color3(0.9, 0.9, 0.9);
+    newFloorMaterial.metallic = 1;
+    newFloorMaterial.roughness = 0;
+    newFloorMaterial.alpha = 1;
+    newFloorMaterial.baseTexture.uScale = 2;
+    newFloorMaterial.baseTexture.vScale = 2;
+    newFloorMaterial.emissiveTexture.uScale = 2;
+    newFloorMaterial.emissiveTexture.vScale = 2;
 
-    //Creates a new standard material
-    var newCurtainMaterial = new BABYLON.StandardMaterial;
-    newCurtainMaterial.diffuseTexture = new BABYLON.Texture(assetsDir + "fabric.jpg", scene);
-    newCurtainMaterial.bumpTexture = new BABYLON.Texture(assetsDir + "fabric.jpg", scene);
-    newCurtainMaterial.reflectionFresnelParameters = new BABYLON.FresnelParameters();
-    newCurtainMaterial.reflectionFresnelParameters.leftColor = new BABYLON.Color3(0.8, 0.8, 0.8);
-    newCurtainMaterial.reflectionFresnelParameters.rightColor = BABYLON.Color3.Black();
-    newCurtainMaterial.diffuseTexture.uScale = 8;
-    newCurtainMaterial.diffuseTexture.vScale = 8;
-    newCurtainMaterial.bumpTexture.uScale = 8;
-    newCurtainMaterial.bumpTexture.vScale = 8;
+    // New Curtain material
+    var newCurtainMaterial = new BABYLON.PBRMetallicRoughnessMaterial('newCurtainMaterial', scene);
+    newCurtainMaterial.baseTexture = new BABYLON.Texture(assetsDir + "fabric_2.jpg", scene);
+    newCurtainMaterial.emissiveTexture = new BABYLON.Texture(assetsDir + "fabric_emissive.jpg", scene);
+    newCurtainMaterial.emissiveColor = new BABYLON.Color3(0.9, 0.9, 0.9);
+    newCurtainMaterial.metallic = 1;
+    newCurtainMaterial.roughness = 0;
+    newCurtainMaterial.alpha = 1;
+    newCurtainMaterial.baseTexture.uScale = 8;
+    newCurtainMaterial.baseTexture.vScale = 8;
+    newCurtainMaterial.emissiveTexture.uScale = 8;
+    newCurtainMaterial.emissiveTexture.vScale = 8; 
+    
+    // New Paper material
+    var paper = new BABYLON.PBRMetallicRoughnessMaterial('paper', scene);
+    paper.baseTexture = new BABYLON.Texture(assetsDir + "paper2.jpg", scene);
+    paper.emissiveTexture = new BABYLON.Texture(assetsDir + "paper2.jpg", scene);
+    paper.emissiveColor = new BABYLON.Color3(0.7, 0.7, 0.7);
+    paper.metallic = 1;
+    paper.roughness = 0;
+    paper.alpha = 1;
 
-    //Creates a new standard material
-    var newGrillMaterial = new BABYLON.StandardMaterial;
-    newGrillMaterial.diffuseTexture = new BABYLON.Texture(assetsDir + "tex_structure_speaker_1.jpg", scene);
-    newGrillMaterial.reflectionFresnelParameters = new BABYLON.FresnelParameters();
-    newGrillMaterial.reflectionFresnelParameters.leftColor = new BABYLON.Color3(0.8, 0.8, 0.8);
-    newGrillMaterial.reflectionFresnelParameters.rightColor = BABYLON.Color3.Black();
-    newGrillMaterial.diffuseTexture.uScale = 2;
-    newGrillMaterial.diffuseTexture.vScale = 6;
+    // New Grill material
+    var newGrillMaterial = new BABYLON.PBRMetallicRoughnessMaterial('newGrillMaterial', scene);
+    newGrillMaterial.baseTexture = new BABYLON.Texture(assetsDir + "tex_structure_speaker_1.jpg", scene);
+    newGrillMaterial.emissiveTexture = new BABYLON.Texture(assetsDir + "tex_structure_speaker_1.jpg", scene);
+    newGrillMaterial.emissiveColor = new BABYLON.Color3(0.7, 0.7, 0.7);
+    newGrillMaterial.metallic = 1;
+    newGrillMaterial.roughness = 0;
+    newGrillMaterial.alpha = 1;
+    newGrillMaterial.baseTexture.uScale = 2;
+    newGrillMaterial.baseTexture.vScale = 6;
+    newGrillMaterial.emissiveTexture.uScale = 2;
+    newGrillMaterial.emissiveTexture.vScale = 6;
 
     //Async load, dealys ataching materials
-    var cubeLoaded = await BABYLON.SceneLoader.ImportMeshAsync("", assetsDir, "auditoriumv3.babylon", scene, function(progress) {
+    var cubeLoaded = await BABYLON.SceneLoader.ImportMeshAsync("", assetsDir, "auditoriumv4.babylon", scene, function(progress) {
         if (progress.loaded === progress.total) {
             const event = new CustomEvent('sceneLoaded');
             document.body.dispatchEvent(event);
         }
     });
 
-    bordWhiteLoaded = scene.getMeshByName("ProjectorScreenWhite");
+    bordWhiteLoaded = scene.getMeshByName("ProjectorScreenWhite_2");
     bordBlueLoaded = scene.getMeshByName("ProjectorScreenBlue");
     laptopLoaded = scene.getMeshByName("TOUGHBOOK");
     stageLoaded = scene.getMeshByName("stage");
@@ -117,7 +146,7 @@ var createScene = async function () {
     seat1Loaded = scene.getMeshByName("seat1");
     projectorLoaded = scene.getMeshByName("Projector");
     mountLoaded = scene.getMeshByName("Mount");
-    chairLoaded = scene.getMeshByName("Chair");
+    chairLoaded = scene.getMeshByName("Chair_2");
     plant2Loaded = scene.getMeshByName("Plant_2");
     plant1Loaded = scene.getMeshByName("Plant");
     deskLoaded = scene.getMeshByName("desk");
@@ -128,7 +157,14 @@ var createScene = async function () {
     tribuneLoaded = scene.getMeshByName("tribune1");
     stairsLoaded = scene.getMeshByName("stairs1");
     curtainLoaded = scene.getMeshByName("Curtain");
-    stageSpeakerLoaded = scene.getMeshByName("StageSpeaker");
+    stageSpeakerMidLoaded = scene.getMeshByName("StageMidSpeaker");
+    stageSpeakerMid2Loaded = scene.getMeshByName("StageMidSpeaker_2");
+    stageSpeakerMid3Loaded = scene.getMeshByName("StageMidSpeaker_3");
+    stageSpeakerMidGrillLoaded = scene.getMeshByName("StageMidSpeakerGrill");
+    stageSpeakerMidGrill2Loaded = scene.getMeshByName("StageMidSpeakerGrill_2");
+    stageSpeakerMidGrill3Loaded = scene.getMeshByName("StageMidSpeakerGrill_3");
+    frontFrameLoaded = scene.getMeshByName("FrontFrame");
+    frontScreenLoaded = scene.getMeshByName("FrontScreen");
     topSpeakerLoaded = scene.getMeshByName("TopSpeaker");
     stageSpeakerGrillLoaded = scene.getMeshByName("TopSpeakerGrill");
     topSpeakerGrillLoaded = scene.getMeshByName("TopSpeakerGrill");
@@ -139,6 +175,26 @@ var createScene = async function () {
     micLoaded = scene.getMeshByName("Mic");
     tvStandLoaded = scene.getMeshByName("TVStand");
     tvBlueLoaded = scene.getMeshByName("TVBlue");
+    paper1Loaded = scene.getMeshByName("Paper_2");
+    paper2Loaded = scene.getMeshByName("Paper_3");
+    paper3Loaded = scene.getMeshByName("Paper_4");
+    paper4Loaded = scene.getMeshByName("Paper_5");
+    paper5Loaded = scene.getMeshByName("Paper_6");
+    paper6Loaded = scene.getMeshByName("Paper_7");
+    paper7Loaded = scene.getMeshByName("Paper_8");
+    paper8Loaded = scene.getMeshByName("Paper_9");
+    paper9Loaded = scene.getMeshByName("Paper_10");
+    paper10Loaded = scene.getMeshByName("Paper_11");
+    paper11Loaded = scene.getMeshByName("Paper_12");
+    paper12Loaded = scene.getMeshByName("Paper_13");
+    paper13Loaded = scene.getMeshByName("Paper_14");
+    paper14Loaded = scene.getMeshByName("Paper_15");
+    paper15Loaded = scene.getMeshByName("Paper_16");
+    paper16Loaded = scene.getMeshByName("Paper_17");
+    paper17Loaded = scene.getMeshByName("Paper_18");
+    paper18Loaded = scene.getMeshByName("Paper_19");
+    paper19Loaded = scene.getMeshByName("Paper_20");
+    paper20Loaded = scene.getMeshByName("Paper_21");
 
     //Instance ChairInstance1L
     let chairInstance1L = seat1Loaded.createInstance("chair1Loaded_clone1L");
@@ -237,48 +293,78 @@ var createScene = async function () {
     stairsInstanceR.rotation = new BABYLON.Vector3(Math.PI*1.5,0,0);
 
     //Attach white material
-    bordWhiteLoaded.material = newWhiteMaterial;
-    stageLoaded.material = newWhiteMaterial;
-    mountLoaded.material = newWhiteMaterial;
-    chairLoaded.material = newWhiteMaterial;
-    plant2Loaded.material = newWhiteMaterial;
-    plant1Loaded.material = newWhiteMaterial;
-    deskLoaded.material = newWhiteMaterial;
-    wallLoaded.material = newWhiteMaterial;
-    planeLoaded.material = newWhiteMaterial;
-    tribuneLoaded.material = newWhiteMaterial;
-    tribuneInstanceM.material = newWhiteMaterial;
-    tribuneInstanceR.material = newWhiteMaterial;
-    stageSpeakerLoaded.material = newWhiteMaterial;
-    topSpeakerLoaded.material = newWhiteMaterial;
-    seat1Loaded.material = newWhiteMaterial;
-    stairsLoaded.material = newWhiteMaterial;
-    ptzMountLoaded.material = newWhiteMaterial;
-    lecternLoaded.material = newWhiteMaterial;
-    micLoaded.material = newWhiteMaterial;
-    tvStandLoaded.material = newWhiteMaterial;
+    bordWhiteLoaded.material = clay;
+    stageLoaded.material = clay;
+    mountLoaded.material = clay;
+    chairLoaded.material = clay;
+    plant2Loaded.material = clay;
+    plant1Loaded.material = clay;
+    deskLoaded.material = clay;
+    wallLoaded.material = clay;
+    planeLoaded.material = clay;
+    tribuneLoaded.material = clay;
+    tribuneInstanceM.material = clay;
+    tribuneInstanceR.material = clay;
+    stageSpeakerMidLoaded.material = clay;
+    stageSpeakerMid2Loaded.material = clay;
+    stageSpeakerMid3Loaded.material = clay;
+    topSpeakerLoaded.material = clay;
+    seat1Loaded.material = clay;
+    stairsLoaded.material = clay;
+    ptzMountLoaded.material = clay;
+    lecternLoaded.material = clay;
+    micLoaded.material = clay;
+    tvStandLoaded.material = clay;
+    bordWhiteLoaded.material = clay;
+
+    //PaperMaterial
+    paper1Loaded.material = paper;
+    paper2Loaded.material = paper;
+    paper3Loaded.material = paper;
+    paper4Loaded.material = paper;
+    paper5Loaded.material = paper;
+    paper6Loaded.material = paper;
+    paper7Loaded.material = paper;
+    paper8Loaded.material = paper;
+    paper9Loaded.material = paper;
+    paper10Loaded.material = paper;
+    paper11Loaded.material = paper;
+    paper12Loaded.material = paper;
+    paper13Loaded.material = paper;
+    paper14Loaded.material = paper;
+    paper15Loaded.material = paper;
+    paper16Loaded.material = paper;
+    paper17Loaded.material = paper;
+    paper18Loaded.material = paper;
+    paper19Loaded.material = paper;
+    paper20Loaded.material = paper;
 
     //Attach blue material
-    laptopLoaded.material = newBlueMaterial;
-    bordBlueLoaded.material = newBlueMaterial;
-    controlLoaded.material = newBlueMaterial;
-    ptzLoaded.material = newBlueMaterial;
-    ptz2Loaded.material = newBlueMaterial;
-    projectorLoaded.material = newBlueMaterial;
-    tvBlueLoaded.material = newBlueMaterial;
+    laptopLoaded.material = clayBlue;
+    bordBlueLoaded.material = clayBlue;
+    controlLoaded.material = clayBlue;
+    ptzLoaded.material = clayBlue;
+    ptz2Loaded.material = clayBlue;
+    projectorLoaded.material = clayBlue;
+    tvBlueLoaded.material = clayBlue;
+    frontFrameLoaded.material = clayBlue;
 
     //Attach screen material
     screenLoaded.material = newScreenMaterial;
+    frontScreenLoaded.material = newScreenMaterial;
 
     //Attach Stage Wood material
     stageWoodLoaded.material = newFloorMaterial;
 
-    //Attach Stage Wood material
+    //Attach Curtain material
     curtainLoaded.material = newCurtainMaterial;
 
-    //Attach Stage Wood material
+    //Attach Speaker Grill material
     stageSpeakerGrillLoaded.material = newGrillMaterial;
     topSpeakerGrillLoaded.material = newGrillMaterial;
+    stageSpeakerMidGrillLoaded.material = newGrillMaterial;
+    stageSpeakerMidGrill2Loaded.material = newGrillMaterial;
+    stageSpeakerMidGrill3Loaded.material = newGrillMaterial;
 
     ///SHADOWS + COLLISIONS
 
@@ -287,7 +373,9 @@ var createScene = async function () {
     shadowGenerator.getShadowMap().renderList = scene.meshes;
     shadowGenerator.useBlurCloseExponentialShadowMap = true;
     shadowGenerator.useKernelBlur = true;
-    shadowGenerator.blurKernel = 15;
+    light.shadowMinZ = 0;
+    light.shadowMaxZ = 31;
+
     bordWhiteLoaded.receiveShadows = true;
     bordBlueLoaded.receiveShadows = true;
     laptopLoaded.receiveShadows = true;
@@ -304,7 +392,12 @@ var createScene = async function () {
     tribuneLoaded.receiveShadows = true;
     stageWoodLoaded.receiveShadows = true;
     curtainLoaded.receiveShadows = true;
-    stageSpeakerLoaded.receiveShadows = true;
+    stageSpeakerMidLoaded.receiveShadows = true;
+    stageSpeakerMid2Loaded.receiveShadows = true;
+    stageSpeakerMid3Loaded.receiveShadows = true;
+    stageSpeakerMidGrillLoaded.receiveShadows = true;
+    stageSpeakerMidGrill2Loaded.receiveShadows = true;
+    stageSpeakerMidGrill3Loaded.receiveShadows = true;
     topSpeakerLoaded.receiveShadows = true;
     stageSpeakerGrillLoaded.receiveShadows = true;
     topSpeakerGrillLoaded.receiveShadows = true;
@@ -318,7 +411,8 @@ var createScene = async function () {
     projectorLoaded.receiveShadows = true;
     tvStandLoaded.receiveShadows = true;
     tvBlueLoaded.receiveShadows = true;
-
+    frontFrameLoaded.receiveShadows = true;
+    frontScreenLoaded.receiveShadows = true;
 
     //Camera Collisions
     bordWhiteLoaded.checkCollisions = true;
@@ -337,7 +431,12 @@ var createScene = async function () {
     tribuneLoaded.checkCollisions = true;
     stageWoodLoaded.checkCollisions = true;
     curtainLoaded.checkCollisions = true;
-    stageSpeakerLoaded.checkCollisions = true;
+    stageSpeakerMidLoaded.checkCollisions = true;
+    stageSpeakerMid2Loaded.checkCollisions = true;
+    stageSpeakerMid3Loaded.checkCollisions = true;
+    stageSpeakerMidGrillLoaded.checkCollisions = true;
+    stageSpeakerMidGrill2Loaded.checkCollisions = true;
+    stageSpeakerMidGrill3Loaded.checkCollisions = true;
     topSpeakerLoaded.checkCollisions = true;
     stageSpeakerGrillLoaded.checkCollisions = true;
     topSpeakerGrillLoaded.checkCollisions = true;
@@ -351,6 +450,8 @@ var createScene = async function () {
     projectorLoaded.checkCollisions = true;
     tvStandLoaded.checkCollisions = true;
     tvBlueLoaded.checkCollisions = true;
+    frontFrameLoaded.checkCollisions = true;
+    frontScreenLoaded.checkCollisions = true;
 
     //Laptop Tooltip
     let actionManager = new BABYLON.ActionManager(scene);
@@ -372,8 +473,87 @@ var createScene = async function () {
         document.body.dispatchEvent(event);
     }));
 
+    //Projector Tooltip 2
+    let actionManagerProjectorAlt = new BABYLON.ActionManager(scene);
+    bordBlueLoaded.actionManager = actionManagerProjectorAlt;
+
+    actionManagerProjectorAlt.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Short Throw Projetor info");
+        const event = new CustomEvent('hotspotAction', { detail: 'projector' });
+        document.body.dispatchEvent(event);
+    }));
+
+    //Screen Tooltip
+    let actionManagerTouch = new BABYLON.ActionManager(scene);
+    screenLoaded.actionManager = actionManagerTouch;
+
+    actionManagerTouch.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Screen info");
+        const event = new CustomEvent('hotspotAction', { detail: 'touch' });
+        document.body.dispatchEvent(event);
+    }));
+
+    //Screen Tooltip 2
+    let actionManagerScreenAlt = new BABYLON.ActionManager(scene);
+    frontFrameLoaded.actionManager = actionManagerScreenAlt;
+
+    actionManagerScreenAlt.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Screen info");
+        const event = new CustomEvent('hotspotAction', { detail: 'screen' });
+        document.body.dispatchEvent(event);
+    }));
+
+    //Control Tooltip
+    let actionManagerControl = new BABYLON.ActionManager(scene);
+    controlLoaded.actionManager = actionManagerControl;
+
+    actionManagerControl.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Controller info");
+        const event = new CustomEvent('hotspotAction', { detail: 'ptz'});
+        document.body.dispatchEvent(event);
+    }));
+
+    //PTZ Tooltip
+    let actionManagerPtz = new BABYLON.ActionManager(scene);
+    ptzLoaded.actionManager = actionManagerPtz;
+
+    actionManagerPtz.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Controller info");
+        const event = new CustomEvent('hotspotAction', { detail: 'ptz' });
+        document.body.dispatchEvent(event);
+    }));
+
+    //PTZ Tooltip Alt
+    let actionManagerPtzalt = new BABYLON.ActionManager(scene);
+    ptz2Loaded.actionManager = actionManagerPtzalt;
+
+    actionManagerPtzalt.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Controller info");
+        const event = new CustomEvent('hotspotAction', { detail: 'ptz' });
+        document.body.dispatchEvent(event);
+    }));
+    
     engine.hideLoadingUI();
     window.camera = camera;
+
+    //Add SSAO2
+    var ssao = new BABYLON.SSAO2RenderingPipeline("ssao", scene, {
+        ssaoRatio: 0.5, // Ratio of the SSAO post-process, in a lower resolution
+        blurRatio: 1 // Ratio of the combine post-process (combines the SSAO and the scene)
+    });
+    ssao.radius = 2.95;
+    ssao.totalStrength = 1.25;
+    ssao.expensiveBlur = true;
+    ssao.samples = 32;
+    ssao.minZ = 5  ;
+    ssao.maxZ = 60;
+    scene.postProcessRenderPipelineManager.attachCamerasToRenderPipeline("ssao", camera)
+
+    //Anti-alisaing
+    var defaultpipeline = new BABYLON.DefaultRenderingPipeline("default", true, scene, [camera]);
+    defaultpipeline.samples = 4;
+    defaultpipeline.fxaaEnabled = true;
+
     return scene;
 };
 

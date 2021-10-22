@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SceneService } from '../../services/scene.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import * as menuData from '../../../assets/menu.json';
 
 @Component({
     selector: 'app-sector',
@@ -11,11 +12,13 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class SectorComponent implements OnInit, OnDestroy {
 
+    menu!: any;
     sector!: string|null;
 
     private readonly destroy$ = new Subject<boolean>();
 
     constructor(private route: ActivatedRoute, private sceneService: SceneService) {
+        this.menu = (menuData as any).default;
     }
 
     ngOnInit(): void {

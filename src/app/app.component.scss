@@ -1,4 +1,6 @@
 @import "base/colors";
+@import "base/viewports";
+@import "base/mixins";
 
 $animation: 300ms ease-in-out;
 
@@ -34,7 +36,15 @@ mat-drawer {
 }
 
 .drawer {
-    padding: 100px 50px 50px;
+    $drawer-padding--x: 50px;
+    $drawer-padding--x--sm: 25px;
+
+    padding: 100px $drawer-padding--x 50px;
+
+    @include respond((max: $md-break)) {
+        padding-left: $drawer-padding--x--sm;
+        padding-right: $drawer-padding--x--sm;
+    }
 
     &__header {
         width: 100%;
@@ -51,11 +61,15 @@ mat-drawer {
             color: $dark;
             border: none;
             background: none;
-            margin-right: 50px;
             font-weight: bold;
             font-size: 18px;
             padding: 4px 8px;
             cursor: pointer;
+            margin-right: $drawer-padding--x;
+
+            @include respond((max: $md-break)) {
+                margin-right: $drawer-padding--x--sm;
+            }
 
             &::after {
                 font-size: 14px;

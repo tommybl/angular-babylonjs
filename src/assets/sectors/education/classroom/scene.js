@@ -9,15 +9,16 @@ var createScene = async function () {
 
     var assetsDir = 'assets/sectors/education/classroom/assets/';
 
+
     // This creates a basic Babylon Scene object (non-mesh)
     var scene = new BABYLON.Scene(engine);
-    scene.clearColor = new BABYLON.Color3(0.82, 0.83, 0.88);
+    scene.clearColor = new BABYLON.Color3(0.98, 0.98, 0.98);
     scene.ambientColor = new BABYLON.Color3(0.4, 0.4, 0.4);
     scene.collisionsEnabled = true;
 
     // This creates and positions an arc rotate camera (non-mesh)
-    var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(0, 2.12, 4.3), scene);
-    camera.setPosition(new BABYLON.Vector3(0, 3, 5));
+    var camera = new BABYLON.ArcRotateCamera("Camera", 7.4, 1.39, 16, new BABYLON.Vector3(-0.81, 1.4, -0.5), scene);
+    //camera.setPosition(new BABYLON.Vector3(5.79, 1.62, 5.76));
     camera.lowerBetaLimit = 0.1;
     camera.upperBetaLimit = (Math.PI / 2) * 0.9;
     camera.lowerRadiusLimit = 5;
@@ -31,44 +32,56 @@ var createScene = async function () {
     scene.activeCamera.alpha += Math.PI;
     camera.checkCollisions = true;
 
-    //Sun
-    var light = new BABYLON.DirectionalLight("DirectionalLight", new BABYLON.Vector3(-0.715, -0.615, -0.332), scene);
-    light.shadowMinZ = -25;
-    light.shadowMaxZ = 75;
-    light.diffuse = new BABYLON.Color3(1, .98, .8);
-    light.intensity = 0.75;
 
-    //GI bounce
-    var GILight = new BABYLON.DirectionalLight("GILight", new BABYLON.Vector3(0.49,-0.45,-0.75), scene);
-    GILight.diffuse = new BABYLON.Color3(.8, .94, 1);
-    GILight.intensity = 0.35;
+    var cameraPosition = new BABYLON.ArcRotateCamera("cameraPosition", 0, 0, 3, new BABYLON.Vector3(0, 2.12, 4.3), scene);
+    cameraPosition.setPosition(new BABYLON.Vector3(0, 3, 5));
+    cameraPosition.lowerBetaLimit = 0.1;
+    cameraPosition.upperBetaLimit = (Math.PI / 2) * 0.9;
+    cameraPosition.lowerRadiusLimit = 5;
+    cameraPosition.upperRadiusLimit = 30;
+    cameraPosition.wheelDeltaPercentage = 0.1;
+    cameraPosition.pinchDeltaPercentage = 0.0005;
+    cameraPosition.maxCameraSpeed = 10;
+    cameraPosition.minZ = 0.1;
+    cameraPosition.maxZ =80;
+    cameraPosition.attachControl(canvas, true);
+    scene.activeCamera.alpha += Math.PI;
+    cameraPosition.checkCollisions = true;
 
-    //HemiLight
-    var hemiLight = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
-    hemiLight.intensity = 0.45;
-    hemiLight.diffuse = new BABYLON.Color3(0.7, 0.7, 1);
+
+    // light for shadows
+    const light = new BABYLON.DirectionalLight(
+        'light',
+        new BABYLON.Vector3(-0.6, -0.91, -0.45),
+        scene
+    )
+    light.intensity = 1
+    const lightDistance = 1
+    light.position = new BABYLON.Vector3(3, 8, -10)
+
+    // White material
+    var newWhiteMaterial = new BABYLON.PBRMetallicRoughnessMaterial('clay', scene);
+    newWhiteMaterial.baseColor = BABYLON.Color3.FromHexString('#e2dfd7');
+    newWhiteMaterial.emissiveColor = BABYLON.Color3.FromHexString('#a0a0a0');
+    newWhiteMaterial.metallic = 0;
+    newWhiteMaterial.roughness = 1;
+    newWhiteMaterial.alpha = 1;
 
     //Creates a new standard material
-    var newWhiteMaterial = new BABYLON.StandardMaterial;
-    newWhiteMaterial.diffuseColor = new BABYLON.Color3(0.9,0.9,0.9);
-    newWhiteMaterial.reflectionFresnelParameters = new BABYLON.FresnelParameters();
-    newWhiteMaterial.reflectionFresnelParameters.leftColor = new BABYLON.Color3(0.8, 0.8, 0.8);
-    newWhiteMaterial.reflectionFresnelParameters.rightColor = BABYLON.Color3.Black();
+    var newBlueMaterial = new BABYLON.PBRMetallicRoughnessMaterial('newBlueMaterial', scene);
+    newBlueMaterial.baseColor = BABYLON.Color3.FromHexString('#3e6acc');
+    newBlueMaterial.emissiveColor = BABYLON.Color3.FromHexString('#162033');
+    newBlueMaterial.metallic = 0;
+    newBlueMaterial.roughness = 1;
+    newBlueMaterial.alpha = 1;
 
-    //Creates a new standard material
-    var newBlueMaterial = new BABYLON.StandardMaterial;
-    newBlueMaterial.diffuseColor = new BABYLON.Color3(0.37, 0.51, 0.89);
-    newBlueMaterial.reflectionFresnelParameters = new BABYLON.FresnelParameters();
-    newBlueMaterial.reflectionFresnelParameters.leftColor = new BABYLON.Color3(0.8, 0.8, 0.8);
-    newBlueMaterial.reflectionFresnelParameters.rightColor = BABYLON.Color3.Black();
-
-    //Creates a new standard material
-    var newScreenMaterial = new BABYLON.StandardMaterial;
-    newScreenMaterial.diffuseColor = new BABYLON.Color3(0.49, 0.60, 0.89);
-    newScreenMaterial.reflectionFresnelParameters = new BABYLON.FresnelParameters();
-    newScreenMaterial.reflectionFresnelParameters.leftColor = BABYLON.Color3.White();
-    newScreenMaterial.reflectionFresnelParameters.rightColor = BABYLON.Color3.White();
+    //screen material
+    var newScreenMaterial = new BABYLON.PBRMetallicRoughnessMaterial('newScreenMaterial', scene);
+    newScreenMaterial.baseColor = new BABYLON.Color3(0.49, 0.60, 0.89);
     newScreenMaterial.emissiveColor = new BABYLON.Color3(0.49, 0.60, 0.89);
+    newScreenMaterial.metallic = 1;
+    newScreenMaterial.roughness = 0;
+    newScreenMaterial.alpha = 1;
 
     //Async load, dealys ataching materials
     var cubeLoaded = await BABYLON.SceneLoader.ImportMeshAsync("", assetsDir, "classroomv2.babylon", scene, function(progress) {
@@ -101,6 +114,9 @@ var createScene = async function () {
     booksShelfLoaded = scene.getMeshByName("books");
     schoolTableLoaded = scene.getMeshByName("SchoolTable");
     shelfLoaded = scene.getMeshByName("shelf");
+    laptopAltLoaded = scene.getMeshByName("Laptop");
+    spiralLoaded = scene.getMeshByName("spiral_notebook");
+    bookcaseLoaded = scene.getMeshByName("BookCase");
 
     //Attach white material
 
@@ -120,6 +136,9 @@ var createScene = async function () {
     booksShelfLoaded.material = newWhiteMaterial;
     schoolTableLoaded.material = newWhiteMaterial;
     shelfLoaded.material = newWhiteMaterial;
+    laptopAltLoaded.material = newWhiteMaterial;
+    spiralLoaded.material = newWhiteMaterial;
+    bookcaseLoaded.material = newWhiteMaterial;
 
     //Attach blue material
     laptopLoaded.material = newBlueMaterial;
@@ -138,7 +157,9 @@ var createScene = async function () {
     shadowGenerator.getShadowMap().renderList = scene.meshes;
     shadowGenerator.useBlurCloseExponentialShadowMap = true;
     shadowGenerator.useKernelBlur = true;
-    shadowGenerator.blurKernel = 15;
+    light.shadowMinZ = 0;
+    light.shadowMaxZ = 31;
+
     laptopLoaded.receiveShadows = true;
     mountLoaded.receiveShadows = true;
     plant1Loaded.receiveShadows = true;
@@ -161,6 +182,9 @@ var createScene = async function () {
     booksShelfLoaded.receiveShadows = true;
     schoolTableLoaded.receiveShadows = true;
     shelfLoaded.receiveShadows = true;
+    laptopAltLoaded.receiveShadows = true;
+    spiralLoaded.receiveShadows = true;
+    bookcaseLoaded.receiveShadows = true;
 
     //Camera Collisions
 
@@ -186,6 +210,9 @@ var createScene = async function () {
     booksShelfLoaded.checkCollisions = true;
     schoolTableLoaded.checkCollisions = true;
     shelfLoaded.checkCollisions = true;
+    laptopAltLoaded.checkCollisions = true;
+    spiralLoaded.checkCollisions = true;
+    bookcaseLoaded.checkCollisions = true;
 
     //Position Table
     tableLoaded.setPosition = new BABYLON.Vector3(-8.437,-243.556,57.118);
@@ -244,8 +271,37 @@ var createScene = async function () {
         document.body.dispatchEvent(event);
     }));
 
+    //Projector Tooltip 2
+    let actionManagerProjector2 = new BABYLON.ActionManager(scene);
+    projectorScreenLoaded.actionManager = actionManagerProjector2;
+
+    actionManagerProjector2.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Short Throw Projetor info");
+        const event = new CustomEvent('hotspotAction', { detail: 'projector' });
+        document.body.dispatchEvent(event);
+    }));
+    
     engine.hideLoadingUI();
     window.camera = camera;
+
+    //Add SSAO2
+    var ssao = new BABYLON.SSAO2RenderingPipeline("ssao", scene, {
+        ssaoRatio: 0.5, // Ratio of the SSAO post-process, in a lower resolution
+        blurRatio: 1 // Ratio of the combine post-process (combines the SSAO and the scene)
+    });
+    ssao.radius = 0.65;
+    ssao.totalStrength = 0.75;
+    ssao.expensiveBlur = true;
+    ssao.samples = 32;
+    ssao.minZ = 5  ;
+    ssao.maxZ = 40;
+    scene.postProcessRenderPipelineManager.attachCamerasToRenderPipeline("ssao", camera)
+
+    //Anti-alisaing
+    var defaultpipeline = new BABYLON.DefaultRenderingPipeline("default", true, scene, [camera]);
+    defaultpipeline.samples = 4;
+    defaultpipeline.fxaaEnabled = true;
+
     return scene;
 };
 
