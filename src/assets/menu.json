@@ -1,5 +1,6 @@
 {
     "corporate": {
+        "guide": "How does Panasonic support Manufacturing?",
         "title": "How does Panasonic support Manufacturing?",
         "scenes": [
             {
@@ -20,6 +21,7 @@
         ]
     },
     "education": {
+        "guide": "How does Panasonic support Education?",
         "title": "How does Panasonic support Education?",
         "scenes": [
             {

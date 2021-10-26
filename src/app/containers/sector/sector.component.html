@@ -1,8 +1,8 @@
 <div class="guide">
     <div class="guide__backdrop"></div>
     <div class="guide__inner">
-        <div class="guide__copy">
-            <h1>Nullam nulla eros ultricies sit</h1>
+        <div class="guide__copy" *ngIf="sector && menu && menu[sector]?.guide">
+            <h1 [innerHTML]="menu[sector]?.guide"></h1>
         </div>
         <div class="guide__figures">
             <div class="guide__figure">
@@ -38,7 +38,7 @@
         </div>
         <a class="button primary"
             [routerLink]="menu[sector].scenes[0].alias"
-            *ngIf="sector && menu && menu[sector].scenes?.length"
+            *ngIf="sector && menu && menu[sector]?.scenes?.length"
         >
             Launch
         </a>

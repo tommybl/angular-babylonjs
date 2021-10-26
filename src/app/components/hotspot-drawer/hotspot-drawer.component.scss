@@ -1,6 +1,8 @@
 @import 'base/icons/mixins';
 @import 'base/colors';
 @import 'base/typography';
+@import 'base/mixins';
+@import 'base/viewports';
 
 .hotspot {
     &__product {
@@ -34,14 +36,22 @@
             flex-wrap: nowrap;
             align-items: flex-start;
             gap: 30px;
+
+            @include respond((max: $md-break)) {
+                flex-direction: column;
+            }
         }
 
         &__image {
-            flex: 3;
+            @include respond((min: $md-break-min)) {
+                flex: 3;
+            }
         }
 
         &__content {
-            flex: 6;
+            @include respond((min: $md-break-min)) {
+                flex: 6;
+            }
 
             > h4 {
                 margin-bottom: 10px;
