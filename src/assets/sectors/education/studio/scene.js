@@ -15,9 +15,6 @@ var createScene = async function () {
     scene.ambientColor = new BABYLON.Color3(0.4, 0.4, 0.4);
     scene.collisionsEnabled = true;
 
-    //Scene debugger
-    //scene.debugLayer.show();
-
     // This creates and positions an arc rotate camera (non-mesh)
     var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 3, new BABYLON.Vector3(-3, 0.6, 4.3), scene);
     camera.setPosition(new BABYLON.Vector3(10, 1.5, -10));
@@ -175,14 +172,14 @@ var createScene = async function () {
     tripodInstance.rotation = new BABYLON.Vector3(Math.PI*3/2,-0.6971,0);
 
     let computerMonitorInstance = computerMonitorLoaded.createInstance("computerMonitorLoaded_clone");
-    computerMonitorInstance.position = new BABYLON.Vector3(0.099,0.101,-0.192);
+    computerMonitorInstance.position = new BABYLON.Vector3(1.07,1.01,-2.00);
     computerMonitorInstance.scaling = new BABYLON.Vector3(0.01,0.01,0.01);
-    computerMonitorInstance.rotation = new BABYLON.Vector3(0,0,5.498);
+    computerMonitorInstance.rotation = new BABYLON.Vector3(Math.PI*3/2,Math.PI,Math.PI*3/2);
 
     let computerScreenInstance = computerScreenLoaded.createInstance("computerScreenLoaded_clone");
-    computerScreenInstance.position = new BABYLON.Vector3(0.991,0.101,-0.192);
+    computerScreenInstance.position = new BABYLON.Vector3(1.07,1.084,-2.00);
     computerScreenInstance.scaling = new BABYLON.Vector3(0.01,0.01,0.01);
-    computerScreenInstance.rotation = new BABYLON.Vector3(0,0,5.498);
+    computerScreenInstance.rotation = new BABYLON.Vector3(Math.PI*3/2,2.356,Math.PI*3/2);
 
     // //Attach white material
     speakerLoaded.material = clay;
@@ -222,7 +219,6 @@ var createScene = async function () {
     windowLoaded.material = windowMaterial;
 
     ///SHADOWS + COLLISIONS
-
     //Generate shadows
     var shadowGenerator =  new BABYLON.ShadowGenerator(2048, light);
     shadowGenerator.getShadowMap().renderList = scene.meshes;
@@ -286,19 +282,6 @@ var createScene = async function () {
     visionMixerLoaded.checkCollisions = true;
     cameraLoaded.checkCollisions = true;
 
-
-    //Laptop Tooltip
-    let actionManager = new BABYLON.ActionManager(scene);
-    cameraLoaded.actionManager = actionManager;
-
-    actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
-        // alert("Load TOUGHBOOK info");
-        const event = new CustomEvent('hotspotAction', { detail: 'toughbook' });
-        document.body.dispatchEvent(event);
-    }));
-
-
-
     //Control Tooltip
     let actionManagerControl = new BABYLON.ActionManager(scene);
     visionMixerLoaded.actionManager = actionManagerControl;
@@ -309,20 +292,173 @@ var createScene = async function () {
         document.body.dispatchEvent(event);
     }));
 
+    let actionManagerControlComputer = new BABYLON.ActionManager(scene);
+    computerLoaded.actionManager = actionManagerControlComputer;
 
+    actionManagerControlComputer.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Control info");
+        const event = new CustomEvent('hotspotAction', { detail: 'control' });
+        document.body.dispatchEvent(event);
+    }));
 
+    let actionManagerKeyboard = new BABYLON.ActionManager(scene);
+    keyboardLoaded.actionManager = actionManagerKeyboard;
 
+    actionManagerKeyboard.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Control info");
+        const event = new CustomEvent('hotspotAction', { detail: 'control' });
+        document.body.dispatchEvent(event);
+    }));
 
+    let actionManagerKeyboardALT = new BABYLON.ActionManager(scene);
+    keyboard2Loaded.actionManager = actionManagerKeyboardALT;
+
+    actionManagerKeyboardALT.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Control info");
+        const event = new CustomEvent('hotspotAction', { detail: 'control' });
+        document.body.dispatchEvent(event);
+    }));
+
+    let actionManagerStudioComputer = new BABYLON.ActionManager(scene);
+    computerMonitorLoaded.actionManager = actionManagerStudioComputer;
+
+    actionManagerStudioComputer.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Control info");
+        const event = new CustomEvent('hotspotAction', { detail: 'control' });
+        document.body.dispatchEvent(event);
+    }));
+
+    let actionManagerStudioComputerScreen = new BABYLON.ActionManager(scene);
+    computerScreenLoaded.actionManager = actionManagerStudioComputerScreen;
+
+    actionManagerStudioComputerScreen.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Control info");
+        const event = new CustomEvent('hotspotAction', { detail: 'control' });
+        document.body.dispatchEvent(event);
+    }));
+
+    let actionManagerStudioComputerInstance = new BABYLON.ActionManager(scene);
+    computerMonitorInstance.actionManager = actionManagerStudioComputerInstance;
+
+    actionManagerStudioComputerInstance.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Control info");
+        const event = new CustomEvent('hotspotAction', { detail: 'control' });
+        document.body.dispatchEvent(event);
+    }));
+
+    let actionManagerStudioComputerScreenInstance = new BABYLON.ActionManager(scene);
+    computerScreenInstance.actionManager = actionManagerStudioComputerScreenInstance;
+
+    actionManagerStudioComputerScreenInstance.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Control info");
+        const event = new CustomEvent('hotspotAction', { detail: 'control' });
+        document.body.dispatchEvent(event);
+    }));
+
+    //Camera Tooltip
+    let actionManagerCamera = new BABYLON.ActionManager(scene);
+    cameraLoaded.actionManager = actionManagerCamera;
+
+    actionManagerCamera.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Control info");
+        const event = new CustomEvent('hotspotAction', { detail: 'camera' });
+        document.body.dispatchEvent(event);
+    }));
+
+    let actionManagerCameraAlt = new BABYLON.ActionManager(scene);
+    cameraInstance.actionManager = actionManagerCameraAlt;
+
+    actionManagerCameraAlt.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Control info");
+        const event = new CustomEvent('hotspotAction', { detail: 'camera' });
+        document.body.dispatchEvent(event);
+    }));
+
+    //Screen Tooltip
+    let actionManagerScreen = new BABYLON.ActionManager(scene);
+    tvBlueLoaded.actionManager = actionManagerScreen;
+
+    actionManagerScreen.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Control info");
+        const event = new CustomEvent('hotspotAction', { detail: 'screen' });
+        document.body.dispatchEvent(event);
+    }));
+
+    let actionManagerScreenAlt = new BABYLON.ActionManager(scene);
+    screenLoaded.actionManager = actionManagerScreenAlt;
+
+    actionManagerScreenAlt.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Control info");
+        const event = new CustomEvent('hotspotAction', { detail: 'screen' });
+        document.body.dispatchEvent(event);
+    }));
+
+    let actionManagerStudioScreen = new BABYLON.ActionManager(scene);
+    tvBlueAltLoaded.actionManager = actionManagerStudioScreen;
+
+    actionManagerStudioScreen.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Control info");
+        const event = new CustomEvent('hotspotAction', { detail: 'screen' });
+        document.body.dispatchEvent(event);
+    }));
+
+    let actionManagerStudioScreenAlt = new BABYLON.ActionManager(scene);
+    tvScreenLoaded.actionManager = actionManagerStudioScreenAlt;
+
+    actionManagerStudioScreenAlt.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Control info");
+        const event = new CustomEvent('hotspotAction', { detail: 'screen' });
+        document.body.dispatchEvent(event);
+    }));
+
+    //Kairos Tooltip
+    let actionManagerServerCase = new BABYLON.ActionManager(scene);
+    serverCaseLoaded.actionManager = actionManagerServerCase;
+
+    actionManagerServerCase.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Control info");
+        const event = new CustomEvent('hotspotAction', { detail: 'kairos' });
+        document.body.dispatchEvent(event);
+    }));
+
+    let actionManagerServer = new BABYLON.ActionManager(scene);
+    server1Loaded.actionManager = actionManagerServer;
+
+    actionManagerServer.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Control info");
+        const event = new CustomEvent('hotspotAction', { detail: 'kairos' });
+        document.body.dispatchEvent(event);
+    }));
+
+    let actionManagerServerB = new BABYLON.ActionManager(scene);
+    serverInstanceB.actionManager = actionManagerServerB;
+
+    actionManagerServerB.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Control info");
+        const event = new CustomEvent('hotspotAction', { detail: 'kairos' });
+        document.body.dispatchEvent(event);
+    }));
+
+    let actionManagerServerM = new BABYLON.ActionManager(scene);
+    serverInstanceM.actionManager = actionManagerServerM;
+
+    actionManagerServerM.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Control info");
+        const event = new CustomEvent('hotspotAction', { detail: 'kairos' });
+        document.body.dispatchEvent(event);
+    }));
+
+    let actionManagerServerT = new BABYLON.ActionManager(scene);
+    serverInstanceT.actionManager = actionManagerServerT;
+
+    actionManagerServerT.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Control info");
+        const event = new CustomEvent('hotspotAction', { detail: 'kairos' });
+        document.body.dispatchEvent(event);
+    }));
 
     engine.hideLoadingUI();
     window.camera = camera;
-
-
-
-
-
-
-
 
     //Add SSAO2
     var ssao = new BABYLON.SSAO2RenderingPipeline("ssao", scene, {
