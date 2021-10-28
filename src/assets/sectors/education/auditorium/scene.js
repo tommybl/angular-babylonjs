@@ -503,6 +503,16 @@ var createScene = async function () {
         document.body.dispatchEvent(event);
     }));
 
+    //Screen Tooltip 2
+    let actionManagerScreenAdditional = new BABYLON.ActionManager(scene);
+    frontScreenLoaded.actionManager = actionManagerScreenAdditional;
+
+    actionManagerScreenAdditional.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function(ev){
+        // alert("Load Screen info");
+        const event = new CustomEvent('hotspotAction', { detail: 'screen' });
+        document.body.dispatchEvent(event);
+    }));
+
     //Control Tooltip
     let actionManagerControl = new BABYLON.ActionManager(scene);
     controlLoaded.actionManager = actionManagerControl;

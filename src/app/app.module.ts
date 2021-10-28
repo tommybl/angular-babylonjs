@@ -12,6 +12,7 @@ import { RunScriptsDirective } from './directives/run-scripts.directive';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { HeaderComponent } from './components/header/header.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { ClickOutsideDirective } from './directives/click-outside.directive';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { LoaderComponent } from './components/loader/loader.component';
         RunScriptsDirective,
         SafeHtmlPipe,
         HeaderComponent,
-        LoaderComponent
+        LoaderComponent,
+        ClickOutsideDirective
     ],
     imports: [
         BrowserModule,

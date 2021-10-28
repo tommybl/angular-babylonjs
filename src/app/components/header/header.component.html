@@ -1,19 +1,22 @@
 <a [routerLink]="'sectors/' + sector" class="header__logo">
     <img src="assets/images/panasonic-logo.png" alt="Panasonic Business">
 </a>
-<button class="header__burger icon--bars-light" (click)="open()"></button>
 
-<div class="header__menu" *ngIf="sector && menu && menu[sector]" [class.opened]="opened">
-    <button class="header__close icon--close" (click)="close()"></button>
-    <h2>{{ menu[sector].title }}</h2>
-    <ul *ngIf="menu[sector].scenes?.length" class="unstyled">
-        <li *ngFor="let item of menu[sector].scenes">
-            <a [routerLink]="'sectors/' + sector + '/' + item.alias" (click)="close()" [style.background-image]="'url(' + item.image + ')'">
-                <div class="backdrop"></div>
-                <span>{{ item.name }}</span>
-            </a>
-        </li>
-    </ul>
+<div class="header__menu-backdrop" [class.visible]="opened"></div>
+
+<div appClickOutside (clickOutside)="close()">
+    <button class="header__burger icon--bars-light" (click)="open()"></button>
+
+    <div class="header__menu" *ngIf="sector && menu && menu[sector]" [class.opened]="opened">
+        <button class="header__close icon--close" (click)="close()"></button>
+        <h2>{{ menu[sector].title }}</h2>
+        <ul *ngIf="menu[sector].scenes?.length" class="unstyled">
+            <li *ngFor="let item of menu[sector].scenes">
+                <a [routerLink]="'sectors/' + sector + '/' + item.alias" (click)="close()" [style.background-image]="'url(' + item.image + ')'">
+                    <div class="backdrop"></div>
+                    <span>{{ item.name }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 </div>
-
-
