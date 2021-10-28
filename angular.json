@@ -20,7 +20,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/angular-babylonjs",
+                        "outputPath": "dist/angular-babylonjs/browser",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -111,7 +111,8 @@
                         "tsConfig": [
                             "tsconfig.app.json",
                             "tsconfig.spec.json",
-                            "e2e/tsconfig.json"
+                            "e2e/tsconfig.json",
+                            "tsconfig.server.json"
                         ],
                         "exclude": [
                             "**/node_modules/**"
@@ -128,6 +129,46 @@
                         "production": {
                             "devServerTarget": "angular-babylonjs:serve:production"
                         }
+                    }
+                },
+                "server": {
+                    "builder": "@angular-devkit/build-angular:server",
+                    "options": {
+                        "outputPath": "dist/angular-babylonjs/server",
+                        "main": "server.ts",
+                        "tsConfig": "tsconfig.server.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "sourceMap": false,
+                            "optimization": true
+                        }
+                    }
+                },
+                "serve-ssr": {
+                    "builder": "@nguniversal/builders:ssr-dev-server",
+                    "options": {
+                        "browserTarget": "angular-babylonjs:build",
+                        "serverTarget": "angular-babylonjs:server"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "angular-babylonjs:build:production",
+                            "serverTarget": "angular-babylonjs:server:production"
+                        }
+                    }
+                },
+                "prerender": {
+                    "builder": "@nguniversal/builders:prerender",
+                    "options": {
+                        "browserTarget": "angular-babylonjs:build:production",
+                        "serverTarget": "angular-babylonjs:server:production",
+                        "routes": [
+                            "/"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {}
                     }
                 }
             }

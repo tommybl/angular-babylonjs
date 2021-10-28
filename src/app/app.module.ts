@@ -27,7 +27,7 @@ import { ClickOutsideDirective } from './directives/click-outside.directive';
         ClickOutsideDirective
     ],
     imports: [
-        BrowserModule,
+        BrowserModule.withServerTransition({ appId: 'serverApp' }),
         AppRoutingModule,
         BrowserAnimationsModule,
         MatSidenavModule,
