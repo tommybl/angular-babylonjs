@@ -144,7 +144,12 @@
                         "main": "server.ts",
                         "tsConfig": "tsconfig.server.json",
                         "sourceMap": true,
-                        "optimization": false
+                        "optimization": false,
+                        "stylePreprocessorOptions": {
+                            "includePaths": [
+                                "src/styles"
+                            ]
+                        }
                     },
                     "configurations": {
                         "production": {
@@ -173,7 +178,9 @@
                         "browserTarget": "angular-babylonjs:build:production",
                         "serverTarget": "angular-babylonjs:server:production",
                         "routes": [
-                            "/"
+                            "/",
+                            "/sectors/education",
+                            "/sectors/education/auditorium"
                         ]
                     },
                     "configurations": {
