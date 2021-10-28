@@ -1,11 +1,9 @@
 <mat-drawer-container [hasBackdrop]="true">
-    <mat-drawer #drawer [mode]="'over'" class="drawer">
+    <mat-drawer #drawer [mode]="'over'" class="drawer" (closed)="closeDrawer()">
         <div class="drawer__header">
             <button (click)="drawer.close()" class="icon--close icon-after">Close</button>
         </div>
-        <div class="drawer__content">
-            <app-hotspot-drawer></app-hotspot-drawer>
-        </div>
+        <app-hotspot-drawer></app-hotspot-drawer>
     </mat-drawer>
     <mat-drawer-content>
         <app-header></app-header>

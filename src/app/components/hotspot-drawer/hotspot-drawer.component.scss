@@ -4,6 +4,13 @@
 @import 'base/mixins';
 @import 'base/viewports';
 
+:host {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
 .hotspot {
     &__product {
         h2 {
