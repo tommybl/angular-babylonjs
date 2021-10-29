@@ -16,7 +16,7 @@
         "build:ssr:dev": "ng build && ng run angular-babylonjs:server",
         "build:ssr:prod": "ng build --configuration=prod && ng run angular-babylonjs:server:prod",
         "generate:routes": "npx ts-node --project scripts/tsconfig.json ./scripts/generate-routes.ts",
-        "prerender": "npm run generate:routes && ng run angular-babylonjs:prerender:prod"
+        "prerender:prod": "npm run generate:routes && ng run angular-babylonjs:prerender:prod"
     },
     "private": true,
     "dependencies": {
