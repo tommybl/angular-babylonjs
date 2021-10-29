@@ -1,5 +1,5 @@
 {
-    "name": "angular-babylonjs",
+    "name": "psceu-solutions-drawings",
     "version": "0.0.0",
     "author": "Tommy Lopes",
     "readme": "Node v14.17.3 + NPM 6.14.13",
@@ -11,12 +11,12 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "dev:ssr": "ng run angular-babylonjs:serve-ssr",
-        "serve:ssr": "node dist/angular-babylonjs/server/main.js",
-        "build:ssr:dev": "ng build && ng run angular-babylonjs:server",
-        "build:ssr:prod": "ng build --configuration=prod && ng run angular-babylonjs:server:prod",
+        "dev:ssr": "ng run psceu-solutions-drawings:serve-ssr",
+        "serve:ssr": "node dist/psceu-solutions-drawings/server/main.js",
+        "build:ssr:dev": "ng build && ng run psceu-solutions-drawings:server",
+        "build:ssr:prod": "ng build --configuration=prod && ng run psceu-solutions-drawings:server:prod",
         "generate:routes": "npx ts-node --project scripts/tsconfig.json ./scripts/generate-routes.ts",
-        "prerender:prod": "npm run generate:routes && ng run angular-babylonjs:prerender:prod"
+        "prerender:prod": "npm run generate:routes && ng run psceu-solutions-drawings:prerender:prod"
     },
     "private": true,
     "dependencies": {

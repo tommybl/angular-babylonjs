@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "angular-babylonjs": {
+        "psceu-solutions-drawings": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -20,7 +20,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/angular-babylonjs/browser",
+                        "outputPath": "dist/psceu-solutions-drawings/browser",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -80,18 +80,18 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "angular-babylonjs:build"
+                        "browserTarget": "psceu-solutions-drawings:build"
                     },
                     "configurations": {
                         "prod": {
-                            "browserTarget": "angular-babylonjs:build:prod"
+                            "browserTarget": "psceu-solutions-drawings:build:prod"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "angular-babylonjs:build"
+                        "browserTarget": "psceu-solutions-drawings:build"
                     }
                 },
                 "test": {
@@ -129,18 +129,18 @@
                     "builder": "@angular-devkit/build-angular:protractor",
                     "options": {
                         "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "angular-babylonjs:serve"
+                        "devServerTarget": "psceu-solutions-drawings:serve"
                     },
                     "configurations": {
                         "prod": {
-                            "devServerTarget": "angular-babylonjs:serve:prod"
+                            "devServerTarget": "psceu-solutions-drawings:serve:prod"
                         }
                     }
                 },
                 "server": {
                     "builder": "@angular-devkit/build-angular:server",
                     "options": {
-                        "outputPath": "dist/angular-babylonjs/server",
+                        "outputPath": "dist/psceu-solutions-drawings/server",
                         "main": "server.ts",
                         "tsConfig": "tsconfig.server.json",
                         "sourceMap": true,
@@ -162,21 +162,21 @@
                 "serve-ssr": {
                     "builder": "@nguniversal/builders:ssr-dev-server",
                     "options": {
-                        "browserTarget": "angular-babylonjs:build",
-                        "serverTarget": "angular-babylonjs:server"
+                        "browserTarget": "psceu-solutions-drawings:build",
+                        "serverTarget": "psceu-solutions-drawings:server"
                     },
                     "configurations": {
                         "prod": {
-                            "browserTarget": "angular-babylonjs:build:prod",
-                            "serverTarget": "angular-babylonjs:server:prod"
+                            "browserTarget": "psceu-solutions-drawings:build:prod",
+                            "serverTarget": "psceu-solutions-drawings:server:prod"
                         }
                     }
                 },
                 "prerender": {
                     "builder": "@nguniversal/builders:prerender",
                     "options": {
-                        "browserTarget": "angular-babylonjs:build:prod",
-                        "serverTarget": "angular-babylonjs:server:prod",
+                        "browserTarget": "psceu-solutions-drawings:build:prod",
+                        "serverTarget": "psceu-solutions-drawings:server:prod",
                         "routesFile": "routes.txt"
                     },
                     "configurations": {
@@ -186,5 +186,5 @@
             }
         }
     },
-    "defaultProject": "angular-babylonjs"
+    "defaultProject": "psceu-solutions-drawings"
 }
