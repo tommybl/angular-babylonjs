@@ -1,9 +1,10 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, OnDestroy, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { SceneService } from '../../services/scene.service';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
     selector: 'app-scene',
@@ -22,8 +23,9 @@ export class SceneComponent implements OnInit, AfterViewInit, OnDestroy {
     constructor(
         private route: ActivatedRoute,
         private sceneService: SceneService,
-        private http: HttpClient)
-    {}
+        private http: HttpClient,
+        @Inject(PLATFORM_ID) private platformId: any
+    ) {}
 
     ngOnInit(): void {
         this.sceneService.loading();
@@ -45,13 +47,15 @@ export class SceneComponent implements OnInit, AfterViewInit, OnDestroy {
                 this.sceneService.setScene(scene);
 
                 // Run babylon script for this sector scene.
-                this.http
-                    .get('assets/sectors/' + sector + '/' + scene + '/scene.js', { responseType: 'text' })
-                    .pipe(takeUntil(this.destroy$))
-                    .subscribe(data => {
-                        this.scriptMarkup = '<script>' + data + '</script>';
-                        this.runScripts$.next(true);
-                    });
+                if (isPlatformBrowser(this.platformId)) {
+                    this.http
+                        .get('assets/sectors/' + sector + '/' + scene + '/scene.js', { responseType: 'text' })
+                        .pipe(takeUntil(this.destroy$))
+                        .subscribe(data => {
+                            this.scriptMarkup = '<script>' + data + '</script>';
+                            this.runScripts$.next(true);
+                        });
+                }
             });
     }
 

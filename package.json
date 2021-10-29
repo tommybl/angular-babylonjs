@@ -14,8 +14,8 @@
         "dev:ssr": "ng run angular-babylonjs:serve-ssr",
         "serve:ssr": "node dist/angular-babylonjs/server/main.js",
         "build:ssr:dev": "ng build && ng run angular-babylonjs:server",
-        "build:ssr:prod": "ng build --configuration=prod && ng run angular-babylonjs:server:production",
-        "prerender": "ng run angular-babylonjs:prerender"
+        "build:ssr:prod": "ng build --configuration=prod && ng run angular-babylonjs:server:prod",
+        "prerender": "ng run angular-babylonjs:prerender:prod"
     },
     "private": true,
     "dependencies": {

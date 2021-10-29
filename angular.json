@@ -83,8 +83,8 @@
                         "browserTarget": "angular-babylonjs:build"
                     },
                     "configurations": {
-                        "production": {
-                            "browserTarget": "angular-babylonjs:build:production"
+                        "prod": {
+                            "browserTarget": "angular-babylonjs:build:prod"
                         }
                     }
                 },
@@ -132,8 +132,8 @@
                         "devServerTarget": "angular-babylonjs:serve"
                     },
                     "configurations": {
-                        "production": {
-                            "devServerTarget": "angular-babylonjs:serve:production"
+                        "prod": {
+                            "devServerTarget": "angular-babylonjs:serve:prod"
                         }
                     }
                 },
@@ -152,7 +152,7 @@
                         }
                     },
                     "configurations": {
-                        "production": {
+                        "prod": {
                             "sourceMap": false,
                             "optimization": true
                         }
@@ -166,17 +166,17 @@
                         "serverTarget": "angular-babylonjs:server"
                     },
                     "configurations": {
-                        "production": {
-                            "browserTarget": "angular-babylonjs:build:production",
-                            "serverTarget": "angular-babylonjs:server:production"
+                        "prod": {
+                            "browserTarget": "angular-babylonjs:build:prod",
+                            "serverTarget": "angular-babylonjs:server:prod"
                         }
                     }
                 },
                 "prerender": {
                     "builder": "@nguniversal/builders:prerender",
                     "options": {
-                        "browserTarget": "angular-babylonjs:build:production",
-                        "serverTarget": "angular-babylonjs:server:production",
+                        "browserTarget": "angular-babylonjs:build:prod",
+                        "serverTarget": "angular-babylonjs:server:prod",
                         "routes": [
                             "/",
                             "/sectors/education",
@@ -184,7 +184,7 @@
                         ]
                     },
                     "configurations": {
-                        "production": {}
+                        "prod": {}
                     }
                 }
             }

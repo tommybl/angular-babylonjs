@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SectorComponent } from './containers/sector/sector.component';
-import { SceneComponent } from './components/scene/scene.component';
+import { SceneComponent } from './containers/scene/scene.component';
 import { SectorGuard } from './routing/guards/sector.guard';
 import { SceneGuard } from './routing/guards/scene.guard';
 

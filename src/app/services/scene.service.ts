@@ -23,7 +23,7 @@ export class SceneService {
         private http: HttpClient,
         private loaderService: LoaderService,
         @Inject(DOCUMENT) private doc: Document,
-        @Inject(PLATFORM_ID) private platformId: string)
+        @Inject(PLATFORM_ID) private platformId: any)
     {
         this.doc.body.addEventListener('sceneLoaded', (e: any) => {
             this.loaded();
@@ -64,11 +64,13 @@ export class SceneService {
     setScene(scene: string|null): void {
         this.scene = scene;
 
-        this.http
-            .get('assets/sectors/' + this.sector + '/' + scene + '/data.json')
-            .subscribe(data => {
-                this.sceneData = data;
-            });
+        if (isPlatformBrowser(this.platformId)) {
+            this.http
+                .get('assets/sectors/' + this.sector + '/' + scene + '/data.json')
+                .subscribe(data => {
+                    this.sceneData = data;
+                });
+        }
     }
 
     getDrawer(): MatDrawer {
