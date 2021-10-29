@@ -44,3 +44,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Routes generated for Angular pre-rendering
+routes.txt

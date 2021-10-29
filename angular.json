@@ -177,11 +177,7 @@
                     "options": {
                         "browserTarget": "angular-babylonjs:build:prod",
                         "serverTarget": "angular-babylonjs:server:prod",
-                        "routes": [
-                            "/",
-                            "/sectors/education",
-                            "/sectors/education/auditorium"
-                        ]
+                        "routesFile": "routes.txt"
                     },
                     "configurations": {
                         "prod": {}
